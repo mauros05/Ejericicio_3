@@ -31,7 +31,7 @@
         <div class="mb-3">
             <label for="codigoProducto" class="form-label">Codigo del Producto:</label>
             <input type="text" name="codigoProducto" class="form-control" id="codigoProducto" value="<?php echo isset($codigoProducto['codigoProducto'])? $codigoProducto['codigoProducto'] : "" ?>"/>
-            <button type="submit" class="btn btn-primary mt-3 mb-3" name="buscar">Buscar</button>
+            <button type="submit" class="btn btn-danger mt-2 mb-3" name="buscar">Buscar Producto</button>
         </div>
 
         <?php if(isset($resProducto['msg_producto'])) {?>
@@ -43,12 +43,12 @@
 
         <div class="mb-3">
             <label for="categoria" class="form-label">Nombre del Producto:</label>
-            <input type="text" name="nomProducto" class="form-control" id="nomProducto" value='<?php echo isset($resProducto['producto'])? $resProducto['producto'] : "" ?>'/>
+            <input type="text" name="nomProducto" class="form-control" id="nomProducto" value='<?php echo isset($resProducto['producto'])? $resProducto['producto'] : "" ?>' readonly='readonly'/>
         </div>
 
         <div class="mb-3">
             <label for="categoria" class="form-label">Categoria:</label>
-            <input type="text" name="categoria" class="form-control" id="categoria" value='<?php echo isset($resProducto['categoria'])? $resProducto['categoria'] : "" ?>'/>
+            <input type="text" name="categoria" class="form-control" id="categoria" value='<?php echo isset($resProducto['categoria'])? $resProducto['categoria'] : "" ?>' readonly='readonly'/>
         </div>
 
         <div class="mb-3">
