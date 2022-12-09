@@ -31,15 +31,7 @@
         <div class="mb-3">
             <label for="codigoProducto" class="form-label">Codigo del Producto:</label>
             <input type="text" name="codigoProducto" class="form-control" id="codigoProducto" value="<?php echo isset($codigoProducto['codigoProducto'])? $codigoProducto['codigoProducto'] : "" ?>"/>
-            <button type="submit" class="btn btn-danger mt-2 mb-3" name="buscar">Buscar Producto</button>
         </div>
-
-        <?php if(isset($resProducto['msg_producto'])) {?>
-			<div id="validationServer04Feedback" style="color: red;" class="mb-3">
-			  <?php echo $resProducto['msg_producto']; ?>
-			</div>
-		<?php }?>
-
 
         <div class="mb-3">
             <label for="categoria" class="form-label">Nombre del Producto:</label>

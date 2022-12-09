@@ -6,22 +6,22 @@ l<div class="login-container">
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Email address</label>
         <input type="text" name="usuario" class="form-control" id="email" aria-describedby="emailHelp" value='<?= isset($dato['usuario'])? $dato['usuario'] : '' ?>'>
-      </div>
-      <?php if(isset($respuesta['usuario'])) {?>
-        <div id="validationServer04Feedback" style="color: red;" class="mb-3">
-          <?php echo $respuesta['usuario']; ?>
+        <div id="validationUser" style="color: red;" class="mb-3" hidden>
+          Hola User
         </div>
-      <?php }?>
+      </div>
+      
+      
 
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Password</label>
         <input type="password" name="password" class="form-control" id="password" value='<?= isset($dato['password'])? $dato['password'] : '' ?>'>
-      </div>
-      <?php if(isset($respuesta['password'])) {?>
-        <div id="validationServer04Feedback" style="color: red;" class="mb-3">
-          <?php echo $respuesta['password']; ?>
+        <div id="validationPassword" style="color: red;" class="mb-3" hidden>
+          Hola Password
         </div>
-      <?php }?>
+      </div>
+      
+      
 
       <button type="submit" name="enviar" class="btn btn-dark" id="Login">Submit</button>
     </form>

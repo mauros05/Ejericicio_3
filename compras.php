@@ -20,8 +20,8 @@
 			}
 		} 
     } else {
-        if(isset($_POST['buscar'])){
-            $comprasController->crearSolicitud($_POST);   
+        if(isset($_POST['cod_producto'])){
+            $comprasController->buscarProducto($_POST["cod_producto"]);   
         } else {
             $resp = $comprasController->guardarSolicitud($_POST);
 

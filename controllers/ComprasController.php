@@ -9,20 +9,25 @@
 
         public function crearSolicitud($codigoProducto = NULL){
 			$data['Titulo']  = 'Crear Solicitud';
-			$data['urlJquery'] = 'assets/js/compras.js';
+			$data['urlJquery'] = 'assets/js/crearSolicitudes.js';
 			
 			$resFolio		 = $this->ComprasModel->getFolio();
 			$folio 			 = date('Y')."-".$resFolio;
 			$resUsuario 	 = $this->ComprasModel->getUsuario();
-			if(!empty($codigoProducto['codigoProducto'])){
-				$resProducto = $this->ComprasModel->getProducto($codigoProducto['codigoProducto']);
-			}
+			
 
 			require_once "views/Templates/Header.php";
 			require_once "views/Templates/Navbar.php";
 			require_once "views/ComprasVista/crearSolicitud.php";
 			require_once "views/Templates/Footer.php";
         }
+
+		public function buscarProducto($codigo){
+			$resProducto = $this->ComprasModel->getProducto($codigo);
+		
+			echo json_encode($resProducto);
+			exit;
+		}
 
         public function miSolicitud(){
             $data['Titulo']  = 'Mis Solicitudes';

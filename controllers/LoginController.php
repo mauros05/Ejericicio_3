@@ -16,18 +16,16 @@
 
 		public function validarLogin($data){
 		
-			$respuesta = NULL;
+			$resValiar = NULL;
 
 			if (empty($data['usuario'])) {
-				$respuesta['usuario'] = "El usuario no puede ir vacio"; 
+				$resValiar['usuario'] = "El usuario no puede ir vacio";
+				$resValiar['validar_user'] = "valuser"; 
 			} 
 
 			if (empty($data['password'])) {
-				$respuesta['password'] = "Password no puede ir vacio"; 
-			}
-
-			if (!is_null($respuesta)) {
-				return $respuesta;
+				$resValiar['password'] = "Password no puede ir vacio";
+				$resValiar['validar_password'] = "valpass"; 
 			}
 
 			$res = $this->LoginModel->validarLogin($data);

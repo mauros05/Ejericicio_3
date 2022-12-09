@@ -15,20 +15,36 @@ $(document).ready(function(){
             dataType: "json",
 
             success: function (res) {
+                if(res.validar_user == 'valuser'){
+                    $("#validationUser").html(res.usuario);
+                    $("#validationUser").removeAttr("hidden");
+                } else {
+                    $("#validationUser").attr("hidden", "true");
+                }
+
+                if(res.validar_password == 'valpass'){
+                    $("#validationPassword").html(res.password);
+                    $("#validationPassword").removeAttr("hidden");
+                } else {
+                    $("#validationPassword").attr("hidden", "true");
+                }
+
                if(res.validar == 0){
                    $("#div-message").html(res.mensaje);
                    $("#modalLogin").modal("show")
-               } else {
+                } else {
                     window.location = "home.php";
-               }
+                }
             },
 
             error: function(xhr, status){
                 //alert("Algo salio mal :(");
+                console.log("Algo salio mal :(");
             },
 
             complete: function (xhr, status) {  
                 //alert("Peticion correcta");
+                console.log("Peticion correcta");
             }
         });
     })
