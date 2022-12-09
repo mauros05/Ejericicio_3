@@ -5,8 +5,8 @@
 			$this->LoginModel = new LoginModel();
 		}
 		
-		public function index($respuesta = NULL, $titulo = NULL, $dato= NULL){
-			$data['Titulo']  = $titulo;
+		public function index($respuesta = NULL, $titulo = NULL, $dato = NULL){
+			$data['Titulo']    = $titulo;
 			$data['urlJquery'] = "assets/js/login.js";
 
 			require_once "views/Templates/Header.php";
@@ -35,7 +35,6 @@
 			if(!empty($res['id_usuario'])) {
                 session_start();
 				$_SESSION = $res;
-				//header('location: Home.php');
 				$resValiar['mensaje'] = "Bienvenida";
 				$resValiar['validar'] = 1;
           	} else {
@@ -47,7 +46,7 @@
 			exit;
 		}
 		
-		public function registrar($respuesta = NULL, $dato= NULL) {
+		public function registrar($respuesta = NULL, $dato = NULL) {
 			$data['Titulo'] = "Registrar";
 
 			require_once "views/Templates/Header.php";

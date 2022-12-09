@@ -5,6 +5,7 @@
 	$title = "Login";
 	
 	$metodo = $_SERVER['REQUEST_METHOD'];
+	
 	if($metodo == 'POST') {
 		// Para mandar al registro del usuario
 		// $respuesta = $Login->guardar($_POST);

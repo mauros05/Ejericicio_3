@@ -40,12 +40,11 @@ use JetBrains\PhpStorm\Internal\ReturnTypeContract;
 		public function validarLogin($datos){
 			$query         = "SELECT * FROM usuarios WHERE usuario='".$datos["usuario"]."' OR email='".$datos["usuario"]."' AND password='".$datos["password"]."' AND status=1";
 			$resp_validar  = mysqli_query($this->db, $query);
-			$errorMessage  = NULL;
             
             if(mysqli_num_rows($resp_validar) > 0){
                 while($rows = mysqli_fetch_assoc($resp_validar)){
 					$data["id_usuario"] = $rows["id_usuario"];
-					$data["nombre"] = $rows["nombres"]." ".$rows["ap_pat"]." ".$rows["ap_mat"];
+					$data["nombre"] 	= $rows["nombres"]." ".$rows["ap_pat"]." ".$rows["ap_mat"];
                 }
 				return $data;
             } else {
