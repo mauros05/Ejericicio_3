@@ -46,10 +46,11 @@
 			$resFolio = $this->ComprasModel->getFolio();
 			
 			if($folio[1] == $resFolio) {
-				$this->ComprasModel->actualizarFolio($resFolio + 1);
+				$this->ComprasModel->actualizarFolio($resFolio);
 			} else {
 				$resFolio 	   = $this->ComprasModel->getFolio();
-				$data['folio'] = date("Y") ."-". $resFolio;
+				$data['folio'] = date("Y")."-".$resFolio;
+				$this->ComprasModel->actualizarFolio($resFolio);
 			}
 
 			$resProducto 	     = $this->ComprasModel->getProducto($data['codigoProducto']);

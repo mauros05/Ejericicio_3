@@ -48,7 +48,7 @@
 
         <div class="mb-3">
             <label for="categoria" class="form-label">Categoria:</label>
-            <input type="text" name="categoria" class="form-control" id="categoria" value='<?php echo isset($resProducto['producto'])? $resProducto['producto'] : "" ?>'/>
+            <input type="text" name="categoria" class="form-control" id="categoria" value='<?php echo isset($resProducto['categoria'])? $resProducto['categoria'] : "" ?>'/>
         </div>
 
         <div class="mb-3">

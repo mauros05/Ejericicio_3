@@ -11,10 +11,12 @@
 			
 			$resQuery = mysqli_query($this->con,$query);
 			
-			while($row=mysqli_fetch_assoc($resQuery)){
-				$folio = $row['numero_folio'] + 1;
+			if(mysqli_num_rows($resQuery) > 0){
+				while($row=mysqli_fetch_assoc($resQuery)){
+					$folio = $row['numero_folio'] + 1;
+				}
 			}
-			
+
 			return $folio;
 		}
 		
@@ -69,7 +71,7 @@
 		}
 
 		public function actualizarFolio($data){
-			$query = "UPDATE folios SET numero_folio =".$data." WHERE id_folio = 1";
+			$query = "UPDATE folios SET numero_folio ='".$data."' WHERE id_folio = 1";
 			
 			$resQuery = mysqli_query($this->con, $query);
 		}
