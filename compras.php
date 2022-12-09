@@ -24,6 +24,8 @@
             $comprasController->buscarProducto($_POST["cod_producto"]);   
         } else {
             $resp = $comprasController->guardarSolicitud($_POST);
+            echo json_encode($_POST);
+            exit;
 
             if($resp == TRUE){
                 $comprasController->miSolicitud();

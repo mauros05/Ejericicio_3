@@ -1,5 +1,5 @@
 <div class="container">
-    <form action="" method="post" enctype="multipart/form-data" class="mt-3">
+    <form action="" method="post" enctype="multipart/form-data" class="mt-3" id="crear-solicitud">
         <h1 class="mb-3">Crear Solicitud de Compra</h1>
 			
         <div class="mb-3">
@@ -31,6 +31,7 @@
         <div class="mb-3">
             <label for="codigoProducto" class="form-label">Codigo del Producto:</label>
             <input type="text" name="codigoProducto" class="form-control" id="codigoProducto" value="<?php echo isset($codigoProducto['codigoProducto'])? $codigoProducto['codigoProducto'] : "" ?>"/>
+            <div id="codigoAlert" style="color: red" hidden></div>
         </div>
 
         <div class="mb-3">
@@ -46,11 +47,12 @@
         <div class="mb-3">
             <label for="cantidad" class="form-label">Cantidad:</label>
             <input type="number" name="cantidad" class="form-control" id="cantidad" value=''/>
+            <div id="cantidadAlert" style="color: red" hidden></div>
         </div>
 
         <div class="mb-3">
             <label for="urgencia" class="form-label">Urgencia:</label>
-            <select class="form-select" name="urgencia" aria-label="Default select example">
+            <select class="form-select" name="urgencia" aria-label="Default select example" id="prioridad">
                 <option value="1">Bajo</option>
                 <option value="2">Medio</option>
                 <option value="3">Alto</option>
@@ -60,8 +62,9 @@
         <div class="mb-3">
             <label for="descripcion" class="form-label">Descripcion:</label>
             <textarea type="text" name="descripcion" class="form-control" id="descripcion" value=''></textarea>
+            <div id="descripcionAlert" style="color: red" hidden></div>
         </div>
             
-        <button type="submit" class="btn btn-primary mt-3 mb-3">Crear Solicitud</button>
+        <button type="button" class="btn btn-primary mt-3 mb-3" id="crearSolicitud">Crear Solicitud</button>
     </form>
 </div>
