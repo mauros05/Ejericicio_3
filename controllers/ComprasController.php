@@ -9,6 +9,8 @@
 
         public function crearSolicitud($codigoProducto = NULL){
 			$data['Titulo']  = 'Crear Solicitud';
+			$data['urlJquery'] = 'assets/js/compras.js';
+			
 			$resFolio		 = $this->ComprasModel->getFolio();
 			$folio 			 = date('Y')."-".$resFolio;
 			$resUsuario 	 = $this->ComprasModel->getUsuario();
