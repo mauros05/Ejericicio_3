@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $("#Login").click(function(){
+    $("#Login").click(function(event){
         event.preventDefault();
     
         var usu = $("#email").val();
@@ -38,12 +38,10 @@ $(document).ready(function(){
             },
 
             error: function(xhr, status){
-                //alert("Algo salio mal :(");
                 console.log("Algo salio mal :(");
             },
 
             complete: function (xhr, status) {  
-                //alert("Peticion correcta");
                 console.log("Peticion correcta");
             }
         });

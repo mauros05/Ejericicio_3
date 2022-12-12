@@ -7,12 +7,14 @@
         }
 		
 		public function getFolio(){
-			$query = "SELECT * FROM folios WHERE id_folio = 1"; // Query para solicitudes
+			$query = "SELECT * 
+					  FROM folios 
+					  WHERE id_folio = 1"; // Query para solicitudes
 			
-			$resQuery = mysqli_query($this->con,$query);
+			$resQuery = mysqli_query($this->con, $query);
 			
 			if(mysqli_num_rows($resQuery) > 0){
-				while($row=mysqli_fetch_assoc($resQuery)){
+				while($row = mysqli_fetch_assoc($resQuery)){
 					$folio = $row['numero_folio'] + 1;
 				}
 			}
@@ -36,9 +38,9 @@
 							 INNER JOIN usuarios ul ON ul.id_usuario = d.id_usuario
 							 WHERE u.id_usuario=".$_SESSION['id_usuario'];
 			
-			$resQuery = mysqli_query($this->con,$query);
+			$resQuery = mysqli_query($this->con, $query);
 			
-			while($row=mysqli_fetch_assoc($resQuery)){
+			while($row = mysqli_fetch_assoc($resQuery)){
 				$data['nombre_lider'] = $row["lnombre"]." ".$row["lap_pat"]." ".$row["lap_mat"];
 				$data['departamento'] = $row["departamento"];
 			}
@@ -55,9 +57,9 @@
 							 ON c.id_categoria = p.id_categoria 
 							 WHERE codigo_producto ='".$codigo."'";
 			
-			$resQuery = mysqli_query($this->con,$query);
+			$resQuery = mysqli_query($this->con, $query);
 			
-			if(mysqli_num_rows($resQuery)> 0){
+			if(mysqli_num_rows($resQuery) > 0){
 				while($row=mysqli_fetch_assoc($resQuery)){
 					$data['producto']    = $row['producto'];
 					$data['categoria'] 	 = $row['categoria'];
@@ -116,11 +118,11 @@
 					ON p.id_producto = s.id_producto
 					LEFT JOIN status st 
 					ON st.id_status = s.id_status
-					WHERE s.id_usuario=".$_SESSION['id_usuario'];
+					WHERE s.id_usuario =".$_SESSION['id_usuario'];
 
 			$resQuery = mysqli_query($this->con, $query);
 			
-			if(mysqli_num_rows($resQuery)>0){
+			if(mysqli_num_rows($resQuery) > 0){
 				$i= 0;
 				while($row = mysqli_fetch_assoc($resQuery)){
 				$data['id_solicitud'][$i] = $row['id_solicitud'];
@@ -140,15 +142,15 @@
 
 		public function getSolicitd($id){
 			$query = "SELECT s.folio,
-							s.fecha_creacion,
-							s.cantidad,
-							s.descripcion,
-							s.id_urgencia,
-							p.producto,
-							p.codigo_producto,
-							c.categoria,
-							st.status,
-							st.color
+							 s.fecha_creacion,
+							 s.cantidad,
+							 s.descripcion,
+							 s.id_urgencia,
+							 p.producto,
+							 p.codigo_producto,
+							 c.categoria,
+							 st.status,
+							 st.color
 					FROM solicitudes s 
 					INNER JOIN productos p
 					ON s.id_producto = p.id_producto
@@ -161,17 +163,18 @@
 			$resQuery = mysqli_query($this->con, $query);
 
 			while($row = mysqli_fetch_assoc($resQuery)){
-				$data["folio"] = $row["folio"];
-				$data["fecha_creacion"] = $row["fecha_creacion"];
-				$data["cantidad"] = $row["cantidad"];
-				$data["descripcion"] = $row["descripcion"];
-				$data["id_urgencia"] = $row["id_urgencia"];
-				$data["producto"] = $row["producto"];
+				$data["folio"] 			 = $row["folio"];
+				$data["fecha_creacion"]  = $row["fecha_creacion"];
+				$data["cantidad"] 		 = $row["cantidad"];
+				$data["descripcion"] 	 = $row["descripcion"];
+				$data["id_urgencia"] 	 = $row["id_urgencia"];
+				$data["producto"] 		 = $row["producto"];
 				$data["codigo_producto"] = $row["codigo_producto"];
-				$data["categoria"] = $row["categoria"];
-				$data["status"] = $row["status"];
-				$data["color"] = $row["color"];
+				$data["categoria"] 	 	 = $row["categoria"];
+				$data["status"] 		 = $row["status"];
+				$data["color"] 			 = $row["color"];
 			}
+
 			return $data;
 		}
 

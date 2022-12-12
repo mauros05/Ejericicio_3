@@ -11,8 +11,6 @@ l<div class="login-container">
         </div>
       </div>
       
-      
-
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Password</label>
         <input type="password" name="password" class="form-control" id="password" value='<?= isset($dato['password'])? $dato['password'] : '' ?>'>
@@ -21,8 +19,6 @@ l<div class="login-container">
         </div>
       </div>
       
-      
-
       <button type="submit" name="enviar" class="btn btn-dark" id="Login">Submit</button>
     </form>
   </div>

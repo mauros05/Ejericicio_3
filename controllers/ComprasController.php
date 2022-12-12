@@ -8,7 +8,7 @@
         }
 
         public function crearSolicitud($codigoProducto = NULL){
-			$data['Titulo']  = 'Crear Solicitud';
+			$data['Titulo']    = 'Crear Solicitud';
 			$data['urlJquery'] = 'assets/js/crearSolicitudes.js';
 			
 			$resFolio		 = $this->ComprasModel->getFolio();
@@ -30,9 +30,10 @@
 		}
 
         public function miSolicitud(){
-            $data['Titulo']  = 'Mis Solicitudes';
-			$resSolicitudes		 = $this->ComprasModel->getSolicitudes();
+            $data['Titulo']    = 'Mis Solicitudes';
 			$data['urlJquery'] = 'assets/js/misSolicitudes.js';
+			
+			$resSolicitudes	 = $this->ComprasModel->getSolicitudes();
 
 			require_once "views/Templates/Header.php";
 			require_once "views/Templates/Navbar.php";
@@ -42,6 +43,7 @@
 
 		public function buscarSolicitud($id){
 			$resSolicitud = $this->ComprasModel->getSolicitd($id);
+			
 			echo json_encode($resSolicitud);
 		}
 
@@ -71,11 +73,11 @@
 			
 			$data["id_producto"] = $resProducto["id_producto"];
 			
-			$guardarSolicitud 	= $this->ComprasModel->guardarSolicitud($data);
+			$guardarSolicitud 	 = $this->ComprasModel->guardarSolicitud($data);
 			
 			if ($guardarSolicitud == TRUE) {
 				if (isset($bandera)) {
-					$mensaje = "Registro Correcto, su folio es: " .$data['folio'];
+					$mensaje = "Registro Correcto, su folio es: ".$data['folio'];
 					echo json_encode($mensaje);
 				} else {
 					echo json_encode("Registro Correcto");

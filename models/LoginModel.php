@@ -11,7 +11,10 @@ use JetBrains\PhpStorm\Internal\ReturnTypeContract;
 		}
 
 		public function guardar($datos){
-			$query_validar = "SELECT usuario FROM usuarios WHERE email='".$datos['email']."' OR usuario='".$datos['username']."'";
+			$query_validar = "SELECT usuario 
+							  FROM usuarios 
+							  WHERE email='".$datos['email']."' OR usuario='".$datos['username']."'";
+
 			$res_valid 	   = mysqli_query($this->db, $query_validar);
 			$message 	   = NULL;
 
@@ -28,6 +31,7 @@ use JetBrains\PhpStorm\Internal\ReturnTypeContract;
 								'".$datos['email']."',
 								'".$datos['password']."', 
 								1)";
+			
 			$res_insert = mysqli_query($this->db,$query_insertar);
 
 			if($res_insert){
@@ -38,7 +42,10 @@ use JetBrains\PhpStorm\Internal\ReturnTypeContract;
 		}
 
 		public function validarLogin($datos){
-			$query         = "SELECT * FROM usuarios WHERE usuario='".$datos["usuario"]."' OR email='".$datos["usuario"]."' AND password='".$datos["password"]."' AND status=1";
+			$query         = "SELECT * 
+							  FROM usuarios 
+							  WHERE usuario='".$datos["usuario"]."' OR email='".$datos["usuario"]."' AND password='".$datos["password"]."' AND status=1";
+			
 			$resp_validar  = mysqli_query($this->db, $query);
             
             if(mysqli_num_rows($resp_validar) > 0){

@@ -3,6 +3,5 @@
 	
 	$Home = new HomeController();
 	
-	
 	$Home->home();
 ?>

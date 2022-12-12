@@ -39,8 +39,6 @@
 			if($resEditarUsuario == TRUE){
 				header("location: usuario.php");
 			}
-
-
 		}
 		
 		

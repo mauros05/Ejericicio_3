@@ -7,10 +7,12 @@
 		}
 		
 		public function listarUsuarios(){
-			$queryListar = "SELECT * FROM usuarios";
+			$queryListar = "SELECT * 
+							FROM usuarios";
+
 			$resListar   = mysqli_query($this->con,$queryListar);
 			
-			if(mysqli_num_rows($resListar)>0){
+			if(mysqli_num_rows($resListar) > 0){
 				$i=0;
 				while($row = mysqli_fetch_assoc($resListar)){
 					$data['id_usuario'][$i] = $row["id_usuario"];
@@ -26,6 +28,7 @@
 			}else{
 				$data['error_message_listar'] = "No se he encontrado ningun usuario";
 			}
+
 			return $data;
 		}
 
@@ -55,13 +58,17 @@
 			}else{
 				$data['error_message_obtener'] = "No se he encontrado el usuario";
 			}
+
 			return $data;
 		}
 
 		public function obtenerCatRol(){
-			$queryRol   = "SELECT * FROM roles";
+			$queryRol   = "SELECT * 
+						   FROM roles";
+
 			$resObtener = mysqli_query($this->con, $queryRol);
-			if(mysqli_num_rows($resObtener)>0){
+
+			if(mysqli_num_rows($resObtener) > 0){
 				$i=0;
 				while($row = mysqli_fetch_assoc($resObtener)){
 					$data['id_rol'][$i] = $row["id_rol"];
@@ -76,7 +83,8 @@
 
 		public function editarUsuario($data){
 			
-			$queryVerificar = "SELECT * FROM usuarios WHERE 
+			$queryVerificar = "SELECT * 
+							   FROM usuarios WHERE 
 							   id_usuario=".$data["id_usuario"]."
 							   AND nombres='".$data["nombres"]."'
 							   AND usuario='".$data["usuario"]."' 
@@ -99,13 +107,15 @@
 				$resEditar  = mysqli_query($this->con, $queryEditarUsuario);
 			}
 
-			$queryVerficarPermiso = "SELECT * FROM permisos WHERE 
+			$queryVerficarPermiso = "SELECT * 
+									 FROM permisos 
+									 WHERE 
 									 id_usuario='" . $data["id_usuario"] ."'
 								  	 AND id_rol='".$data["rol"]."'";
 
 			$resVerSficarPermiso = mysqli_query($this->con, $queryVerficarPermiso);
 			
-			if(mysqli_num_rows($resVerSficarPermiso)==0){
+			if(mysqli_num_rows($resVerSficarPermiso) == 0){
 				$queryEditarPermiso = "UPDATE permisos SET 
 									   id_rol='".$data["rol"]."'
 									   WHERE id_usuario='".$data["id_usuario"]."'";

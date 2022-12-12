@@ -1,7 +1,7 @@
 $(document).ready(function(){
     var obj = {};
-    $("#codigoProducto").change(function(e) { 
-        e.preventDefault();
+    $("#codigoProducto").change(function(event) { 
+        event.preventDefault();
         var cod_producto = $("#codigoProducto").val()
 
         obj.data   = { cod_producto: cod_producto}

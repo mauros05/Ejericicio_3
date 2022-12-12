@@ -49,29 +49,30 @@ $(document).ready(function(){
     //     $(".ejemplo").attr("style","background-color: green")
     // })
 
-    $("#validar").click(function(){
-        // var user = $("#email").val();
-        // var pass = $("#password").val();
-        event.preventDefault();
-        var formulario = $("#formu").serialize();
-        
-        $.ajax({
-            url: "jquery2.php",
-            data: formulario,
-            type: "POST",
-            dataType: "json",
-            success: function (res) {
-                alert(res);
-            },
-            error: function(xhr, status){
-                alert("Algo salio mal :(");
-            },
-            complete: function (xhr, status) {  
-                alert("Peticion correcta");
-            }
-        });
-    })
 
+    // PARA PASAR DATOS
 
+    //     $("#validar").click(function(){
+    //         // var user = $("#email").val();
+    //         // var pass = $("#password").val();
+    //         event.preventDefault();
+    //         var formulario = $("#formu").serialize();
+            
+    //         $.ajax({
+    //             url: "jquery2.php",
+    //             data: formulario,
+    //             type: "POST",
+    //             dataType: "json",
+    //             success: function (res) {
+    //                 alert(res);
+    //             },
+    //             error: function(xhr, status){
+    //                 alert("Algo salio mal :(");
+    //             },
+    //             complete: function (xhr, status) {  
+    //                 alert("Peticion correcta");
+    //             }
+    //         });
+    // });
 
 })

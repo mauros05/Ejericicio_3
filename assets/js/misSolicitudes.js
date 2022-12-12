@@ -7,9 +7,6 @@ $(document).ready(function(){
         obj.accion = "verSolicitud"   
         peticionAjax(obj);
     })
-
-
-
 });
 
 function peticionAjax (datos){

@@ -1,13 +1,10 @@
 <?php
     require_once "config/Config.php";
     class jqueryController {
-        public function __construct()
-        {
-            
-        }
+        public function __construct(){}
 
         public function jquery(){
-            $data['Titulo'] = 'jquery';
+            $data['Titulo']    = 'jquery';
             $data['urlJquery'] = 'assets/js/jquery.js';
            
             require_once "views/Templates/Header.php";
