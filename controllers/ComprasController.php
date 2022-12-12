@@ -58,12 +58,23 @@
 				$resFolio 	   = $this->ComprasModel->getFolio();
 				$data['folio'] = date("Y")."-".$resFolio;
 				$this->ComprasModel->actualizarFolio($resFolio);
+				$bandera = 1;
 			}
 
 			$resProducto 	     = $this->ComprasModel->getProducto($data['codigoProducto']);
+			
 			$data["id_producto"] = $resProducto["id_producto"];
+			
 			$guardarSolicitud 	= $this->ComprasModel->guardarSolicitud($data);
-			return $guardarSolicitud;
+			
+			if ($guardarSolicitud == TRUE) {
+				if (isset($bandera)) {
+					$mensaje = "Registro Correcto, su folio es: " .$data['folio'];
+					echo json_encode($mensaje);
+				} else {
+					echo json_encode("Registro Correcto");
+				}
+			}
 			
 		}
 

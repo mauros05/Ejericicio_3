@@ -60,7 +60,11 @@ $(document).ready(function(){
                 break;
 
                 case "guardarSolicitud":
-                    
+                    $("#div-message").html(res);
+                    $("#modalSolicitud").modal("show");
+                    setTimeout(function(){
+                        window.location = "compras.php?ac=ms"
+                    }, 5000);
                 break;
                 }
 
