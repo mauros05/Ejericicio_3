@@ -32,12 +32,18 @@
         public function miSolicitud(){
             $data['Titulo']  = 'Mis Solicitudes';
 			$resSolicitudes		 = $this->ComprasModel->getSolicitudes();
+			$data['urlJquery'] = 'assets/js/misSolicitudes.js';
 
 			require_once "views/Templates/Header.php";
 			require_once "views/Templates/Navbar.php";
 			require_once "views/ComprasVista/miSolicitud.php";
 			require_once "views/Templates/Footer.php";
         }
+
+		public function buscarSolicitud($id){
+			$resSolicitud = $this->ComprasModel->getSolicitd($id);
+			echo json_encode($resSolicitud);
+		}
 
         public function verSolicitud(){
             $data['Titulo']  = 'Ver Solicitud';

@@ -103,7 +103,12 @@
 		}
 
 		public function getSolicitudes(){
-			$query = "SELECT s.folio, s.fecha_creacion, s.id_urgencia, st.status 
+			$query = "SELECT s.id_solicitud, 
+							 s.folio, 
+							 s.fecha_creacion, 
+							 s.id_urgencia, 
+							 st.status, 
+							 st.color
 					FROM solicitudes s
 					LEFT JOIN usuarios u
 					ON u.id_usuario = s.id_usuario
@@ -114,19 +119,59 @@
 					WHERE s.id_usuario=".$_SESSION['id_usuario'];
 
 			$resQuery = mysqli_query($this->con, $query);
+			
 			if(mysqli_num_rows($resQuery)>0){
 				$i= 0;
 				while($row = mysqli_fetch_assoc($resQuery)){
+				$data['id_solicitud'][$i] = $row['id_solicitud'];
 					$data['folio'][$i]    = $row['folio'];
 					$data['fecha'][$i]    = $row['fecha_creacion']; 
 					$data['status'][$i]   = $row['status']; 
 					$data['urgencia'][$i] = $row['id_urgencia'];
+					$data['color'][$i] 	  = $row['color'];
 					$i++;
 				}
 			} else {
 				$data['ms_solicitud'] = "No se encontraron solicitudes";
 			}
 			
+			return $data;
+		}
+
+		public function getSolicitd($id){
+			$query = "SELECT s.folio,
+							s.fecha_creacion,
+							s.cantidad,
+							s.descripcion,
+							s.id_urgencia,
+							p.producto,
+							p.codigo_producto,
+							c.categoria,
+							st.status,
+							st.color
+					FROM solicitudes s 
+					INNER JOIN productos p
+					ON s.id_producto = p.id_producto
+					INNER JOIN categorias c
+					ON p.id_categoria = c.id_categoria
+					INNER JOIN status st
+					ON st.id_status = s.id_status 
+					WHERE id_solicitud =".$id;
+
+			$resQuery = mysqli_query($this->con, $query);
+
+			while($row = mysqli_fetch_assoc($resQuery)){
+				$data["folio"] = $row["folio"];
+				$data["fecha_creacion"] = $row["fecha_creacion"];
+				$data["cantidad"] = $row["cantidad"];
+				$data["descripcion"] = $row["descripcion"];
+				$data["id_urgencia"] = $row["id_urgencia"];
+				$data["producto"] = $row["producto"];
+				$data["codigo_producto"] = $row["codigo_producto"];
+				$data["categoria"] = $row["categoria"];
+				$data["status"] = $row["status"];
+				$data["color"] = $row["color"];
+			}
 			return $data;
 		}
 

@@ -17,6 +17,9 @@
             case "vs":
                 $comprasController->verSolicitud();
                 break;
+            case "buscarSolicitud":
+                $comprasController->buscarSolicitud($_GET["idSolicitud"]);
+                break;
 			}
 		} 
     } else {
