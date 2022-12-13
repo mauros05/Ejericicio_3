@@ -178,5 +178,11 @@
 			return $data;
 		}
 
+		public function cancelarSolicitud($id){
+			$query = "UPDATE solicitudes SET id_status = 2 WHERE id_solicitud=" . $id;
+			$resQuery = mysqli_query($this->con, $query);
+			return $resQuery;
+		}
+
     }
 ?>

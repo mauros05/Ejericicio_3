@@ -25,6 +25,8 @@
     } else {
         if(isset($_POST['cod_producto'])){
             $comprasController->buscarProducto($_POST["cod_producto"]);   
+        } elseif(isset($_POST['accion'])){
+            $comprasController->cancelarSolicitud($_POST['idSolicitud']);
         } else {
             $resp = $comprasController->guardarSolicitud($_POST);
         }

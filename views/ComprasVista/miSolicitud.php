@@ -4,9 +4,8 @@
 		<tr class='table-dark'>
 		  <th scope="col">Folio</th>
 		  <th scope="col">Fecha</th>
-		  <th scope="col">Etatus</th>
+		  <th scope="col">Status</th>
 		  <th scope="col">Urgencia</th>
-          <th scope="col"></th>
           <th scope="col"></th>
           <th scope="col"></th>
 		</tr>
@@ -18,19 +17,38 @@
             <tr class='table-light'>
                 <td><?php echo $resSolicitudes['folio'][$i]; ?></td>
                 <td><?php echo $resSolicitudes['fecha'][$i]; ?></td>
-                <td class="<?php echo $resSolicitudes['color'][$i]; ?>"><?php echo $resSolicitudes['status'][$i]; ?></td>
+                <td id="status<?php echo $resSolicitudes['id_solicitud'][$i] ?>" class="<?php echo $resSolicitudes['color'][$i];?>" ><?php echo $resSolicitudes['status'][$i]; ?></td>
                 <td><?php echo $resSolicitudes['urgencia'][$i]; ?></td>
                 <td>
-                    <button type="button" id="verSolicitud" data-id="<?php echo $resSolicitudes['id_solicitud'][$i] ?>" class="btn btn-primary btn-ver">Ver</button>  
+                  <button type="button" id="verSolicitud" data-id="<?php echo $resSolicitudes['id_solicitud'][$i] ?>" class="btn btn-primary btn-ver">Ver</button>  
                 </td>
-                <td>
-                    <a href="usuario.php?ac=m&&i=<?php echo $res['id_usuario'][$i] ?>" id="cancelarSolicitud" class="btn btn-warning">Aceptar</a>
-                </td>
+                <?php if($resSolicitudes['status'][$i] != "cancelado") { ?>
+                  <td>
+                    <button type="button" id="cancelarSolicitud<?php echo $resSolicitudes['id_solicitud'][$i] ?>" data-id="<?php echo $resSolicitudes['id_solicitud'][$i] ?>" class="btn btn-danger btn-cancel">Cancelar</button> 
+                  </td>
+                <?php } else { ?>
+                  <td></td>
+                <?php }  ?>
             </tr>
         <?php } ?>
 	 </tbody>
 	</table>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalCancelarSolicitud" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="div-message-cancelar">
+        ...
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <div class="modal fade" id="modalVerSolicitud" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -82,7 +100,7 @@
 
         <div class="mb-3">
             <label for="status" class="form-label">Status:</label>
-            <input type="text" name="status" class="form-control" id="status" value='' readonly='readonly'/>
+            <input type="text" name="status-modal" class="form-control" id="status-modal" value='' readonly='readonly'/>
         </div>
 
       </div>

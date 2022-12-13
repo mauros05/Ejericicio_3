@@ -86,6 +86,12 @@
 			
 		}
 
+		public function cancelarSolicitud($id) {
+			$resSolicitud = $this->ComprasModel->cancelarSolicitud($id);
+			echo json_encode($resSolicitud);
+			exit;
+		}
+
 
     }
 ?>
