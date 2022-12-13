@@ -28,6 +28,7 @@ function peticionAjax (datos){
                 $("#codigo-producto").val(res.codigo_producto);
                 $("#categoria").val(res.categoria);
                 $("#status").val(res.status);
+                $("#status").addClass(res.color);
                 $("#modalVerSolicitud").modal("show");
             break;
 

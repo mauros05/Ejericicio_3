@@ -13,9 +13,9 @@
 			
 			$resFolio		 = $this->ComprasModel->getFolio();
 			$folio 			 = date('Y')."-".$resFolio;
+			
 			$resUsuario 	 = $this->ComprasModel->getUsuario();
 			
-
 			require_once "views/Templates/Header.php";
 			require_once "views/Templates/Navbar.php";
 			require_once "views/ComprasVista/crearSolicitud.php";
