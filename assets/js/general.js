@@ -1,24 +1,24 @@
-function peticionAjax(datos){
-    return new Promise(function(resolve,reject){
-        $.ajax({
-            url: datos.url,
-            data: datos.data,
-            type: "GET",
-            dataType: "json",
-            success: function (res) {
-                resolve(res)
-            },
+// function peticionAjax(datos){
+//     return new Promise(function(resolve,reject){
+//         $.ajax({
+//             url: datos.url,
+//             data: datos.data,
+//             type: "GET",
+//             dataType: "json",
+//             success: function (res) {
+//                 resolve(res)
+//             },
 
-            error: function(xhr, status){
-                reject(status)
-            },
+//             error: function(xhr, status){
+//                 reject(status)
+//             },
 
-            complete: function (xhr, status) {  
-                console.log("Peticion correcta");
-            }
-        })
-    })
-}
+//             complete: function (xhr, status) {  
+//                 console.log("Peticion correcta");
+//             }
+//         })
+//     })
+// }
 
 function peticionAjax2(datos){
     var respuesta;
