@@ -184,5 +184,52 @@
 			return $resQuery;
 		}
 
+		public function verMisSolicitudes(){
+			$query = "SELECT s.id_solicitud, 
+							s.folio,
+							u.nombres, 
+							u.ap_pat, 
+							u.ap_mat, 
+							s.fecha_creacion, 
+							s.descripcion, 
+							s.id_urgencia, 
+							st.status, 
+							st.color,  
+							pr.codigo_producto 
+					FROM departamento d 
+					INNER JOIN permisos p 
+					ON p.id_departamento = d.id_departamento
+					INNER JOIN solicitudes s 
+					ON s.id_usuario =  p.id_usuario
+					INNER JOIN usuarios u 
+					ON u.id_usuario = s.id_usuario
+					INNER JOIN productos pr 
+					ON pr.id_producto = s.id_producto
+					INNER JOIN status st 
+					ON st.id_status = s.id_status
+					WHERE d.id_usuario =".$_SESSION["id_usuario"];
+
+			$res = mysqli_query($this->con, $query);
+			
+			if(mysqli_num_rows($res) > 0){
+				$i = 0;
+				while($row = mysqli_fetch_assoc($res)){
+					$data["id_solicitud"] = $row["id_solicitud"];
+					$data["folio"][$i] 			 = $row["folio"];
+					$data["nombre"][$i] 		 = $row["nombres"]." ".$row["ap_pat"]." ".$row["ap_mat"];
+					$data["fecha_creacion"][$i]  = $row["fecha_creacion"];
+					$data["descripcion"][$i] 	 = $row["descripcion"];
+					$data["id_urgencia"][$i] 	 = $row["id_urgencia"];
+					$data["status"][$i] 	     = $row["status"];
+					$data["codigo_producto"][$i] = $row["codigo_producto"];
+					$data["color"][$i] 			 = $row["color"];
+					$i++;
+				}
+			} else {
+				$data["msg_error_ms"] = "No se encontraron consultas";
+			}
+			return $data;
+		}
+
     }
 ?>

@@ -103,6 +103,9 @@
             <input type="text" name="status-modal" class="form-control" id="status-modal" value='' readonly='readonly'/>
         </div>
 
+        <button type="button" id="verSolicitud" data-id="<?php echo $resSolicitudes['id_solicitud'][$i] ?>" class="btn btn-primary">Aceptar</button>
+        <button type="button" id="verSolicitud" data-id="<?php echo $resSolicitudes['id_solicitud'][$i] ?>" class="btn btn-danger">Cancelar</button>
+
       </div>
     </div>
   </div>

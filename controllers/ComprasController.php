@@ -50,6 +50,8 @@
         public function verSolicitud(){
             $data['Titulo']  = 'Ver Solicitud';
 
+			$resSolicitudes	 = $this->ComprasModel->verMisSolicitudes();
+
 			require_once "views/Templates/Header.php";
 			require_once "views/Templates/Navbar.php";
 			require_once "views/ComprasVista/verSolicitud.php";

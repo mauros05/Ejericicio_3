@@ -7,17 +7,17 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Usuarios
-          </a>
-          <ul class="dropdown-menu">
-            <?php if($_SESSION['id_rol']== 1) { ?>
+        <?php if($_SESSION['id_rol'] == 1){ ?>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Usuarios
+            </a>
+            <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="usuario.php">Listar Usuarios</a></li>
-            <?php } ?>
-            <li><a class="dropdown-item" href="#">Asignar Permisos</a></li>
-          </ul>
-        </li>
+              <li><a class="dropdown-item" href="#">Asignar Permisos</a></li>
+            </ul>
+          </li>
+        <?php } ?>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Compras
@@ -26,8 +26,10 @@
             <?php if($_SESSION['id_rol'] != 0) { ?>
               <li><a class="dropdown-item" href="compras.php?ac=cs">Crear Solicitud</a></li>
               <li><a class="dropdown-item" href="compras.php?ac=ms">Mis Solicitudes</a></li>
-              <li><a class="dropdown-item" href="compras.php?ac=vs">Ver solicitudes</a></li>
-            <?php } ?>
+              <?php if($_SESSION['id_rol'] == 1){ ?>
+                <li><a class="dropdown-item" href="compras.php?ac=vs">Ver solicitudes</a></li>
+              <?php } ?>
+              <?php } ?>
           </ul>
         </li>
       </ul>
