@@ -72,7 +72,7 @@
         <div id="newProduct"></div>
             
         <button type="button" class="btn btn-primary mt-3 mb-3" id="crearSolicitud">Crear Solicitud</button>
-        <button type="button" class="btn btn-primary mt-3 mb-3" id="add-Producto">Add Other Product</button>
+        <button type="button" class="btn btn-success mt-3 mb-3" id="add-Producto">Add Other Product</button>
         
     </form>
 </div>
