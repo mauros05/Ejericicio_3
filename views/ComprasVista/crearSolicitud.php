@@ -27,27 +27,31 @@
             <label for="lider" class="form-label">Lider:</label>
             <input type="text" class="form-control" id="lider" value='<?php echo $resUsuario['nombre_lider']; ?>' readonly='readonly'/>
         </div>
+           
+        <div id="contentProducto">
+            <div id="dupProdcuto">       
+                <div class="mb-3">
+                    <label for="codigoProducto" class="form-label">Codigo del Producto:</label>
+                    <input type="text" name="codigoProducto[]" class="form-control buscarProductoCod codigoProducto_0" id="codigoProducto" value="<?php echo isset($codigoProducto['codigoProducto'])? $codigoProducto['codigoProducto'] : "" ?>"/>
+                    <div id="codigoAlert" style="color: red" hidden></div>
+                </div>
 
-        <div class="mb-3">
-            <label for="codigoProducto" class="form-label">Codigo del Producto:</label>
-            <input type="text" name="codigoProducto" class="form-control" id="codigoProducto" value="<?php echo isset($codigoProducto['codigoProducto'])? $codigoProducto['codigoProducto'] : "" ?>"/>
-            <div id="codigoAlert" style="color: red" hidden></div>
-        </div>
+                <div class="mb-3">
+                    <label for="categoria" class="form-label">Nombre del Producto:</label>
+                    <input type="text" name="nomProducto" class="form-control nomProducto_0" id="nomProducto" value='<?php echo isset($resProducto['producto'])? $resProducto['producto'] : "" ?>' readonly='readonly'/>
+                </div>
 
-        <div class="mb-3">
-            <label for="categoria" class="form-label">Nombre del Producto:</label>
-            <input type="text" name="nomProducto" class="form-control" id="nomProducto" value='<?php echo isset($resProducto['producto'])? $resProducto['producto'] : "" ?>' readonly='readonly'/>
-        </div>
+                <div class="mb-3">
+                    <label for="categoria" class="form-label">Categoria:</label>
+                    <input type="text" name="categoria" class="form-control categoria_0" id="categoria" value='<?php echo isset($resProducto['categoria'])? $resProducto['categoria'] : "" ?>' readonly='readonly'/>
+                </div>
 
-        <div class="mb-3">
-            <label for="categoria" class="form-label">Categoria:</label>
-            <input type="text" name="categoria" class="form-control" id="categoria" value='<?php echo isset($resProducto['categoria'])? $resProducto['categoria'] : "" ?>' readonly='readonly'/>
-        </div>
-
-        <div class="mb-3">
-            <label for="cantidad" class="form-label">Cantidad:</label>
-            <input type="number" name="cantidad" class="form-control" id="cantidad" value=''/>
-            <div id="cantidadAlert" style="color: red" hidden></div>
+                <div class="mb-3">
+                    <label for="cantidad" class="form-label">Cantidad:</label>
+                    <input type="number" name="cantidad[]" class="form-control" id="cantidad" value=''/>
+                    <div id="cantidadAlert" style="color: red" hidden></div>
+                </div>
+            </div>
         </div>
 
         <div class="mb-3">
@@ -64,8 +68,12 @@
             <textarea type="text" name="descripcion" class="form-control" id="descripcion" value=''></textarea>
             <div id="descripcionAlert" style="color: red" hidden></div>
         </div>
+
+        <div id="newProduct"></div>
             
         <button type="button" class="btn btn-primary mt-3 mb-3" id="crearSolicitud">Crear Solicitud</button>
+        <button type="button" class="btn btn-primary mt-3 mb-3" id="add-Producto">Add Other Product</button>
+        
     </form>
 </div>
 
