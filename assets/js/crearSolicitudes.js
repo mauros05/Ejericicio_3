@@ -45,32 +45,34 @@ $(document).ready(function(){
         var n = $('.contenedor').length;
             n = n + parseInt(1)
 
-        var valor = `<div id="dupProdcuto`+n+`" class="contenedor">       
-        
-            <div class="mb-3">
-                <label for="codigoProducto" class="form-label">Codigo del Producto:</label>
-                <input type="text" name="codigoProducto[]" class="form-control buscarProductoCod codigoProducto_`+n+`" id="codigoProducto" value=""/>
-                <div id="codigoAlert" style="color: red" hidden></div>
-            </div>
+        var valor = `
+            <hr>
+            <div id="dupProdcuto`+n+`" class="contenedor">       
+                <div class="mb-3">
+                    <label for="codigoProducto" class="form-label">Codigo del Producto:</label>
+                    <input type="text" name="codigoProducto[]" class="form-control buscarProductoCod codigoProducto_`+n+`" id="codigoProducto" value=""/>
+                    <div id="codigoAlert" style="color: red" hidden></div>
+                </div>
 
-            <div class="mb-3">
-                <label for="categoria" class="form-label">Nombre del Producto:</label>
-                <input type="text" name="nomProducto" class="form-control nomProducto_`+n+`" id="nomProducto" value='' readonly='readonly'/>
-            </div>
+                <div class="mb-3">
+                    <label for="categoria" class="form-label">Nombre del Producto:</label>
+                    <input type="text" name="nomProducto[]" class="form-control nomProducto_`+n+`" id="nomProducto" value='' readonly='readonly'/>
+                </div>
 
-            <div class="mb-3">
-                <label for="categoria" class="form-label">Categoria:</label>
-                <input type="text" name="categoria" class="form-control categoria_`+n+`" id="categoria" value='' readonly='readonly'/>
-            </div>
+                <div class="mb-3">
+                    <label for="categoria" class="form-label">Categoria:</label>
+                    <input type="text" name="categoria[]" class="form-control categoria_`+n+`" id="categoria" value='' readonly='readonly'/>
+                </div>
 
-            <div class="mb-3">
-                <label for="cantidad" class="form-label">Cantidad:</label>
-                <input type="number" name="cantidad[]" class="form-control cantidad_`+n+`" id="cantidad" value=''/>
-                <div id="cantidadAlert" style="color: red" hidden></div>
-            </div>
+                <div class="mb-3">
+                    <label for="cantidad" class="form-label">Cantidad:</label>
+                    <input type="number" name="cantidad[]" class="form-control cantidad_`+n+`" id="cantidad" value=''/>
+                    <div id="cantidadAlert" style="color: red" hidden></div>
+                </div>
 
-            <button type="button" class="btn btn-danger mt-3 mb-3 borrarElemento" data-increment="`+n+`" id="borrar-Producto">Borrar Producto</button>
-        </div>`;
+                <button type="button" class="btn btn-danger mt-3 mb-3 borrarElemento" data-increment="`+n+`" id="borrar-Producto">Borrar Producto</button>
+            </div>
+            <hr>`;
         
         $("#contentProducto").append(valor);
         

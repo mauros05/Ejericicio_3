@@ -48,14 +48,15 @@
 			return $data;
 		}
 
-		public function getProducto($codigo) {
+		public function getProducto($codigo = NULL, $id_producto = NULL) {
 			$query = "SELECT p.producto, 
 							 p.id_producto, 
-							 c.categoria 
+							 p.codigo_producto,
+							 c.categoria
 							 FROM productos p 
 							 INNER JOIN categorias c 
 							 ON c.id_categoria = p.id_categoria 
-							 WHERE codigo_producto ='".$codigo."'";
+							 WHERE codigo_producto ='".$codigo."' OR id_producto =".$id_producto;
 			
 			$resQuery = mysqli_query($this->con, $query);
 			
@@ -64,6 +65,7 @@
 					$data['producto']    = $row['producto'];
 					$data['categoria'] 	 = $row['categoria'];
 					$data['id_producto'] = $row['id_producto'];
+					$data['codigo_producto'] = $row['codigo_producto'];
 				}
 			} else {
 				$data['msg_producto'] = "No se encontraron productos";
@@ -90,11 +92,12 @@
 											  VALUES('".$data["folio"]."', 
 											 		 '".$_SESSION["id_usuario"]."',
 													 '".$data["id_producto"]."',
-													  ".$data["cantidad"].",
+													 '".$data["cantidad"]."',
 													 '".$data["descripcion"]."',
 													 '".$data["urgencia"]."',
 													 '".$data["fecha"]."',
 													 3)";
+
 			$resQuery = mysqli_query($this->con, $query);
 
 			if(!$resQuery){
@@ -146,15 +149,16 @@
 							 s.cantidad,
 							 s.descripcion,
 							 s.id_urgencia,
+							 s.id_producto,
 							 p.producto,
 							 p.codigo_producto,
 							 c.categoria,
 							 st.status,
 							 st.color
 					FROM solicitudes s 
-					INNER JOIN productos p
+					LEFT JOIN productos p
 					ON s.id_producto = p.id_producto
-					INNER JOIN categorias c
+					LEFT JOIN categorias c
 					ON p.id_categoria = c.id_categoria
 					INNER JOIN status st
 					ON st.id_status = s.id_status 
@@ -168,13 +172,13 @@
 				$data["cantidad"] 		 = $row["cantidad"];
 				$data["descripcion"] 	 = $row["descripcion"];
 				$data["id_urgencia"] 	 = $row["id_urgencia"];
+				$data["id_producto"] 	 = $row["id_producto"];
 				$data["producto"] 		 = $row["producto"];
 				$data["codigo_producto"] = $row["codigo_producto"];
 				$data["categoria"] 	 	 = $row["categoria"];
 				$data["status"] 		 = $row["status"];
 				$data["color"] 			 = $row["color"];
 			}
-
 			return $data;
 		}
 

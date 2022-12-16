@@ -62,40 +62,47 @@
             <label for="folio" class="form-label">Folio:</label>
             <input type="text"  class="form-control" name="folio" id="folio" value='' readonly='readonly'/>
         </div>
-
+        
         <div class="mb-3">
             <label for="fecha" class="form-label">Fecha:</label>
             <input type="text" name="fecha" class="form-control" id="fecha" value='' readonly='readonly'/>
         </div>
 
+        
         <div class="mb-3">
-            <label for="catidad" class="form-label">Cantidad:</label>
-            <input type="text"  class="form-control" id="cantidad" value='' readonly='readonly'/>
+          <label for="descripcion" class="form-label">Descripcion:</label>
+          <input type="text"  class="form-control" id="descripcion" value='' readonly='readonly'/>
         </div>
-
+        
         <div class="mb-3">
-            <label for="descripcion" class="form-label">Descripcion:</label>
-            <input type="text"  class="form-control" id="descripcion" value='' readonly='readonly'/>
+          <label for="urgencia" class="form-label">Urgencia:</label>
+          <input type="text" class="form-control" id="urgencia" value='' readonly='readonly'/>
         </div>
-		
-        <div class="mb-3">
-            <label for="urgencia" class="form-label">Urgencia:</label>
-            <input type="text" class="form-control" id="urgencia" value='' readonly='readonly'/>
-        </div>
-
-        <div class="mb-3">
+        
+        <div class="contenedor-producto">
+          <div class="mb-3">
             <label for="producto" class="form-label">Producto:</label>
             <input type="text" class="form-control" id="producto" value='' readonly='readonly'/>
-        </div>
-
-        <div class="mb-3">
+          </div>
+          
+          <div class="mb-3">
             <label for="codigoProducto" class="form-label">Codigo del Producto:</label>
             <input type="text" name="codigo-producto" class="form-control" id="codigo-producto" value="" readonly='readonly'/>
+          </div>
+          
+          <div class="mb-3">
+              <label for="catidad" class="form-label">Cantidad:</label>
+              <input type="text"  class="form-control" id="cantidad" value='' readonly='readonly'/>
+          </div>
+  
+          <div class="mb-3">
+              <label for="categoria" class="form-label">Categoria:</label>
+              <input type="text" name="categoria" class="form-control" id="categoria" value='' readonly='readonly'/>
+          </div>
         </div>
 
-        <div class="mb-3">
-            <label for="categoria" class="form-label">Categoria:</label>
-            <input type="text" name="categoria" class="form-control" id="categoria" value='' readonly='readonly'/>
+        <div class="multi-producto">
+
         </div>
 
         <div class="mb-3">

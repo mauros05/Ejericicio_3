@@ -22,11 +22,16 @@
 			require_once "views/Templates/Footer.php";
         }
 
-		public function buscarProducto($codigo){
-			$resProducto = $this->ComprasModel->getProducto($codigo);
-		
-			echo json_encode($resProducto);
-			exit;
+		public function buscarProducto($codigo = NULL, $id_producto = NULL){
+			if($codigo!=NULL){
+				$resProducto = $this->ComprasModel->getProducto($codigo);
+				echo json_encode($resProducto);
+				exit;
+			} else {
+				$resProducto = $this->ComprasModel->getProducto(NULL, $id_producto);
+				
+				return $resProducto;
+			}
 		}
 
         public function miSolicitud(){
@@ -43,7 +48,16 @@
 
 		public function buscarSolicitud($id){
 			$resSolicitud = $this->ComprasModel->getSolicitd($id);
+			$prod = json_decode($resSolicitud["id_producto"]);
+			$id_prod = explode(',', $prod->id_producto);
 			
+			foreach($id_prod as $idp){
+				$res[] = $this->ComprasModel->getProducto(NULL, $idp);
+			}
+		// 	echo "<pre>";
+		// 	var_dump($res);
+		//  exit;
+			$resSolicitud["productos_res"] = $res;
 			echo json_encode($resSolicitud);
 		}
 
@@ -71,9 +85,22 @@
 				$bandera = 1;
 			}
 
-			$resProducto 	     = $this->ComprasModel->getProducto($data['codigoProducto']);
+			$arregloProductos=[];
+			for($i=0; $i < count($data['codigoProducto']) ; $i++){
+				$resProducto=$this->ComprasModel->getProducto($data['codigoProducto'][$i]);
+				$idProducto=$resProducto['id_producto'];
+				$arregloDatos=array(
+									'id_producto'=>$idProducto,
+									'nomProducto'=> $data['nomProducto'][$i],
+									'categoria'=>$data['categoria'][$i],
+									'cantidad'=>$data['cantidad'][$i]
+									);
+				array_push($arregloProductos,$arregloDatos);
+			}
+
 			
-			$data["id_producto"] = $resProducto["id_producto"];
+			$data["id_producto"] = json_encode($arregloProductos,true);
+			$data["cantidad"] = '';
 			
 			$guardarSolicitud 	 = $this->ComprasModel->guardarSolicitud($data);
 			
@@ -85,6 +112,19 @@
 					echo json_encode("Registro Correcto");
 				}
 			}
+
+			// FORMA 1 - SERGIO
+			// $cadena   = '';
+			// $cantidad = '';
+
+			// foreach($data["codigoProducto"] as $i => $codigo){
+			// 	$resProducto = $this->ComprasModel->getProducto($codigo);
+			// 	$cadena.=$resProducto["id_producto"].',';
+			// 	$cantidad.=$data["cantidad"][$i].',';
+			// }
+
+			// $productos  = substr($cadena, 0, -1 );
+			// $cantidades = substr($cantidad, 0, -1 );
 			
 		}
 

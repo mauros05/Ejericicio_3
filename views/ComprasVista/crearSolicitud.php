@@ -46,12 +46,12 @@
 
                 <div class="mb-3">
                     <label for="categoria" class="form-label">Nombre del Producto:</label>
-                    <input type="text" name="nomProducto" class="form-control nomProducto_0" id="nomProducto" value='<?php echo isset($resProducto['producto'])? $resProducto['producto'] : "" ?>' readonly='readonly'/>
+                    <input type="text" name="nomProducto[]" class="form-control nomProducto_0" id="nomProducto" value='<?php echo isset($resProducto['producto'])? $resProducto['producto'] : "" ?>' readonly='readonly'/>
                 </div>
 
                 <div class="mb-3">
                     <label for="categoria" class="form-label">Categoria:</label>
-                    <input type="text" name="categoria" class="form-control categoria_0" id="categoria" value='<?php echo isset($resProducto['categoria'])? $resProducto['categoria'] : "" ?>' readonly='readonly'/>
+                    <input type="text" name="categoria[]" class="form-control categoria_0" id="categoria" value='<?php echo isset($resProducto['categoria'])? $resProducto['categoria'] : "" ?>' readonly='readonly'/>
                 </div>
 
                 <div class="mb-3">
