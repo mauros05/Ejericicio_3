@@ -5,8 +5,8 @@
 		  <th scope="col">Nombre</th>
 		  <th scope="col">Apellido Paterno</th>
 		  <th scope="col">Apellido Materno</th>
-		  <th scope="col">Email</th>
-		  <th scope="col">Etatus</th>
+		  <th scope="col">Correo</th>
+		  <th scope="col">Status</th>
 		  <th scope="col">Acciones</th>
 		</tr>
 	  </thead>
@@ -20,7 +20,7 @@
 		  <td><?php echo $res['ap_pat'][$i]; ?></td>
 		  <td><?php echo $res['ap_mat'][$i]; ?></td>
 		  <td><?php echo $res['email'][$i]; ?></td>
-		  <td><?php echo $res['status'][$i]; ?></td>
+		  <td><?php echo $res['status'][$i] == 1? "<span style='color: green;'>ACTIVO</span>": "<span style='color: red;'>INACTIVO</span"; ?></td>
 		  <td><a href="usuario.php?ac=m&&i=<?php echo $res['id_usuario'][$i] ?>" class="btn btn-primary">Editar</a></td>
 		</tr>
 	  <?php } ?>

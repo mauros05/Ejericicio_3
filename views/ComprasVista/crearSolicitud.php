@@ -2,31 +2,39 @@
     <form action="" method="post" enctype="multipart/form-data" class="mt-3" id="crear-solicitud">
         <h1 class="mb-3">Crear Solicitud de Compra</h1>
 			
-        <div class="mb-3">
-            <label for="folio" class="form-label">Folio:</label>
-            <input type="text"  class="form-control" name="folio" id="folio" value='<?php echo $folio; ?>' readonly='readonly'/>
-        </div>
-		
+        <div class="row mb-4">
+            <div class="col">
+                <div>
+                    <label for="folio" class="form-label">Folio:</label>
+                    <input type="text"  class="form-control" name="folio" id="folio" value='<?php echo $folio; ?>' readonly='readonly'/>
+                </div>
+            </div>
 
-        <div class="mb-3">
-            <label for="fecha" class="form-label">Fecha:</label>
-            <input type="text" name="fecha" class="form-control" id="fecha" value='<?php echo date("Y-m-d"); ?>' readonly='readonly'/>
+            <div class="col">
+                <div>
+                    <label for="fecha" class="form-label">Fecha:</label>
+                    <input type="text" name="fecha" class="form-control" id="fecha" value='<?php echo date("Y-m-d"); ?>' readonly='readonly'/>
+                </div>
+            </div>
         </div>
-
+        
         <div class="mb-3">
             <label for="departamento" class="form-label">Usuario:</label>
             <input type="text"  class="form-control" id="departament" value='<?php echo $_SESSION['nombre']; ?>' readonly='readonly'/>
         </div>
 
-        <div class="mb-3">
-            <label for="departamento" class="form-label">Departamento:</label>
-            <input type="text"  class="form-control" id="departament" value='<?php echo $resUsuario['departamento']; ?>' readonly='readonly'/>
+        <div class="row mb-4">
+            <div class="col">
+                <label for="departamento" class="form-label">Departamento:</label>
+                <input type="text"  class="form-control" id="departament" value='<?php echo $resUsuario['departamento']; ?>' readonly='readonly'/>
+            </div>
+            
+            <div class="col">
+                <label for="lider" class="form-label">Lider de Departamento:</label>
+                <input type="text" class="form-control" id="lider" value='<?php echo $resUsuario['nombre_lider']; ?>' readonly='readonly'/>
+            </div>
         </div>
-		
-        <div class="mb-3">
-            <label for="lider" class="form-label">Lider:</label>
-            <input type="text" class="form-control" id="lider" value='<?php echo $resUsuario['nombre_lider']; ?>' readonly='readonly'/>
-        </div>
+
            
         <div id="contentProducto">
             <div id="dupProdcuto">       
@@ -70,7 +78,7 @@
         </div>
             
         <button type="button" class="btn btn-primary mt-3 mb-3" id="crearSolicitud">Crear Solicitud</button>
-        <button type="button" class="btn btn-success mt-3 mb-3" id="add-Producto">Add Producto</button>
+        <button type="button" class="btn btn-success mt-3 mb-3" id="add-Producto">Agregar Producto</button>
         
     </form>
 </div>
