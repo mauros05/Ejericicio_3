@@ -68,11 +68,9 @@
             <textarea type="text" name="descripcion" class="form-control" id="descripcion" value=''></textarea>
             <div id="descripcionAlert" style="color: red" hidden></div>
         </div>
-
-        <div id="newProduct"></div>
             
         <button type="button" class="btn btn-primary mt-3 mb-3" id="crearSolicitud">Crear Solicitud</button>
-        <button type="button" class="btn btn-success mt-3 mb-3" id="add-Producto">Add Other Product</button>
+        <button type="button" class="btn btn-success mt-3 mb-3" id="add-Producto">Add Producto</button>
         
     </form>
 </div>

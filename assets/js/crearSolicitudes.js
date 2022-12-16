@@ -69,7 +69,7 @@ $(document).ready(function(){
                 <div id="cantidadAlert" style="color: red" hidden></div>
             </div>
 
-            <button type="button" class="btn btn-danger mt-3 mb-3 borrarElemento" data-increment="`+n+`" id="borrar-Producto">Borrar Product</button>
+            <button type="button" class="btn btn-danger mt-3 mb-3 borrarElemento" data-increment="`+n+`" id="borrar-Producto">Borrar Producto</button>
         </div>`;
         
         $("#contentProducto").append(valor);
