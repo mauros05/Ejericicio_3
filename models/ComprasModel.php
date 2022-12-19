@@ -56,7 +56,7 @@
 							 FROM productos p 
 							 INNER JOIN categorias c 
 							 ON c.id_categoria = p.id_categoria 
-							 WHERE codigo_producto ='".$codigo."' OR id_producto =".$id_producto;
+							 WHERE codigo_producto ='".$codigo."' OR id_producto ='".$id_producto."'";
 			
 			$resQuery = mysqli_query($this->con, $query);
 			

@@ -48,16 +48,21 @@
 
 		public function buscarSolicitud($id){
 			$resSolicitud = $this->ComprasModel->getSolicitd($id);
-			$prod = json_decode($resSolicitud["id_producto"]);
-			$id_prod = explode(',', $prod->id_producto);
 			
-			foreach($id_prod as $idp){
-				$res[] = $this->ComprasModel->getProducto(NULL, $idp);
+			$prod = json_decode($resSolicitud["id_producto"]);
+			
+			$res = NULL;
+			
+			if(is_object($prod)){
+				$id_prod = explode(',', $prod->id_producto);
+				foreach($id_prod as $idp){
+					$res[] = $this->ComprasModel->getProducto(NULL, $idp);
+				}
+				$resSolicitud["productos_res"] = $res;
+			} elseif (is_array($prod)){
+				$resSolicitud["productos_res_arr"] = $resSolicitud["id_producto"];
 			}
-		// 	echo "<pre>";
-		// 	var_dump($res);
-		//  exit;
-			$resSolicitud["productos_res"] = $res;
+			
 			echo json_encode($resSolicitud);
 		}
 
@@ -93,7 +98,8 @@
 									'id_producto'=>$idProducto,
 									'nomProducto'=> $data['nomProducto'][$i],
 									'categoria'=>$data['categoria'][$i],
-									'cantidad'=>$data['cantidad'][$i]
+									'cantidad'=>$data['cantidad'][$i],
+									'codigo_producto'=>$data['codigoProducto'][$i]
 									);
 				array_push($arregloProductos,$arregloDatos);
 			}

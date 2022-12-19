@@ -9,7 +9,7 @@ $(document).ready(function(){
         obj.type   = "GET";
         obj.accion = "verSolicitud";  
        var res = peticionAjax2(obj);
-            if(res.productos_res != ''){
+            if(typeof res.productos_res !== 'undefined'){
                 $(".contenedor-producto").hide();
                 $("#folio").val(res.folio);
                 $("#fecha").val(res.fecha_creacion);
@@ -42,7 +42,41 @@ $(document).ready(function(){
                 });
                 $(".multi-producto").html(productos)
                 $("#modalVerSolicitud").modal("show");
-            } else{
+            } else if(typeof res.productos_res_arr !== 'undefined'){
+				var productos_Arry = JSON.parse(res.productos_res_arr)
+				$(".contenedor-producto").hide();
+                $("#folio").val(res.folio);
+                $("#fecha").val(res.fecha_creacion);
+                $("#urgencia").val(res.id_urgencia);
+                $("#descripcion").val(res.descripcion);
+                $("#status-modal").val(res.status);
+                var productos ="";
+                $.each(productos_Arry , function (key, producto) { 
+                    // Con el += concatenamos 
+                    productos+=`<hr>
+                                <div class="mb-3">
+                                    <label for="producto" class="form-label">Producto:</label>
+                                    <input type="text" class="form-control" id="producto" value='${producto.nomProducto}' readonly='readonly'/>
+                                </div>
+                        
+                                <div class="mb-3">
+                                    <label for="codigoProducto" class="form-label">Codigo del Producto:</label>
+                                    <input type="text" name="codigo-producto" class="form-control" id="codigo-producto" value="${producto.codigo_producto}" readonly='readonly'/>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="catidad" class="form-label">Cantidad:</label>
+                                    <input type="text"  class="form-control" id="cantidad" value='${producto.cantidad}' readonly='readonly'/>
+                                </div>
+                        
+                                <div class="mb-3">
+                                    <label for="categoria" class="form-label">Categoria:</label>
+                                    <input type="text" name="categoria" class="form-control" id="categoria" value='${producto.categoria}' readonly='readonly'/>
+                                </div>`;
+                });
+                $(".multi-producto").html(productos)
+                $("#modalVerSolicitud").modal("show");
+			} else{
                 $("#folio").val(res.folio);
                 $("#fecha").val(res.fecha_creacion);
                 $("#cantidad").val(res.cantidad);
