@@ -68,7 +68,7 @@
 
         public function verSolicitud(){
             $data['Titulo']  = 'Ver Solicitud';
-
+			$data['urlJquery'] = 'assets/js/verSolicitudes.js';
 			$resSolicitudes	 = $this->ComprasModel->verMisSolicitudes();
 
 			require_once "views/Templates/Header.php";
@@ -136,6 +136,12 @@
 
 		public function cancelarSolicitud($id) {
 			$resSolicitud = $this->ComprasModel->cancelarSolicitud($id);
+			echo json_encode($resSolicitud);
+			exit;
+		}
+
+		public function aceptarSolicitud($id) {
+			$resSolicitud = $this->ComprasModel->aceptarSolicitud($id);
 			echo json_encode($resSolicitud);
 			exit;
 		}

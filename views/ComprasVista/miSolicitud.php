@@ -6,8 +6,7 @@
 		  <th scope="col">Fecha</th>
 		  <th scope="col">Status</th>
 		  <th scope="col">Urgencia</th>
-          <th scope="col"></th>
-          <th scope="col"></th>
+      <th scope="col"></th>
 		</tr>
 	  </thead>
 	  <tbody>
@@ -22,13 +21,7 @@
                 <td>
                   <button type="button" id="verSolicitud" data-id="<?php echo $resSolicitudes['id_solicitud'][$i] ?>" class="btn btn-primary btn-ver">Ver</button>  
                 </td>
-                <?php if($resSolicitudes['status'][$i] != "cancelado") { ?>
-                  <td>
-                    <button type="button" id="cancelarSolicitud<?php echo $resSolicitudes['id_solicitud'][$i] ?>" data-id="<?php echo $resSolicitudes['id_solicitud'][$i] ?>" class="btn btn-danger btn-cancel">Cancelar</button> 
-                  </td>
-                <?php } else { ?>
-                  <td></td>
-                <?php }  ?>
+                
             </tr>
         <?php } ?>
 	 </tbody>
@@ -109,9 +102,6 @@
             <label for="status" class="form-label">Status:</label>
             <input type="text" name="status-modal" class="form-control" id="status-modal" value='' readonly='readonly'/>
         </div>
-
-        <button type="button" id="verSolicitud" data-id="<?php echo $resSolicitudes['id_solicitud'][$i] ?>" class="btn btn-primary">Aceptar</button>
-        <button type="button" id="verSolicitud" data-id="<?php echo $resSolicitudes['id_solicitud'][$i] ?>" class="btn btn-danger">Cancelar</button>
 
       </div>
     </div>

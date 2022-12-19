@@ -14,22 +14,20 @@
 		</tr>
 	  </thead>
 	  <tbody>
-        <?php
-            for($i=0; $i<count($resSolicitudes['folio']); $i++){
-        ?>
+        <?php for($i=0; $i<count($resSolicitudes['folio']); $i++){ ?>
             <tr class='table-light'>
                 <td><?php echo $resSolicitudes['folio'][$i]; ?></td>
                 <td><?php echo $resSolicitudes['fecha_creacion'][$i]; ?></td>
                 <td><?php echo $resSolicitudes['descripcion'][$i]; ?></td>
                 <td><?php echo $resSolicitudes['id_urgencia'][$i]; ?></td>
-                <td id="status<?php echo $resSolicitudes['id_solicitud'][$i] ?>" class="<?php echo $resSolicitudes['color'][$i];?>" ><?php echo $resSolicitudes['status'][$i]; ?></td>
+                <td id="status<?php echo $resSolicitudes['id_solicitud'][$i]; ?>" class="<?php echo $resSolicitudes['color'][$i];?>" ><?php echo $resSolicitudes['status'][$i]; ?></td>
                 <td><?php echo $resSolicitudes['nombre'][$i]; ?></td>
                 <td>
                   <button type="button" id="verSolicitud" data-id="<?php echo $resSolicitudes['id_solicitud'][$i] ?>" class="btn btn-primary btn-ver">Ver</button>  
                 </td>
-                <?php if($resSolicitudes['status'][$i] != "cancelado") { ?>
+                <?php if($resSolicitudes['status'][$i] != "cancelado" && $resSolicitudes['status'][$i] != "enviado a compras") { ?>
                   <td>
-                    <button type="button" id="aceptarSolicitud<?php echo $resSolicitudes['id_solicitud'][$i] ?>" data-id="<?php echo $resSolicitudes['id_solicitud'][$i] ?>" class="btn btn-success">Aceptar</button>  
+                    <button type="button" id="aceptarSolicitud<?php echo $resSolicitudes['id_solicitud'][$i] ?>" data-id="<?php echo $resSolicitudes['id_solicitud'][$i] ?>" class="btn btn-success btn-aceptar">Aceptar</button>  
                   </td>
                   <td>
                     <button type="button" id="cancelarSolicitud<?php echo $resSolicitudes['id_solicitud'][$i] ?>" data-id="<?php echo $resSolicitudes['id_solicitud'][$i] ?>" class="btn btn-danger btn-cancel">Cancelar</button> 
@@ -111,10 +109,10 @@
             <label for="status" class="form-label">Status:</label>
             <input type="text" name="status-modal" class="form-control" id="status-modal" value='' readonly='readonly'/>
         </div>
-
-        <button type="button" id="verSolicitud" data-id="<?php echo $resSolicitudes['id_solicitud'][$i] ?>" class="btn btn-primary">Aceptar</button>
-        <button type="button" id="verSolicitud" data-id="<?php echo $resSolicitudes['id_solicitud'][$i] ?>" class="btn btn-danger">Cancelar</button>
-
+        
+          <button type="button" id="aceptar-modal"  class="btn btn-success btn-aceptar">Aceptar</button>
+          <button type="button" id="cancelar-modal"  class="btn btn-danger btn-cancel">Cancelar</button>
+        
       </div>
     </div>
   </div>

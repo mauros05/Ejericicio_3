@@ -154,7 +154,8 @@
 							 p.codigo_producto,
 							 c.categoria,
 							 st.status,
-							 st.color
+							 st.color,
+							 st.id_status
 					FROM solicitudes s 
 					LEFT JOIN productos p
 					ON s.id_producto = p.id_producto
@@ -173,6 +174,7 @@
 				$data["descripcion"] 	 = $row["descripcion"];
 				$data["id_urgencia"] 	 = $row["id_urgencia"];
 				$data["id_producto"] 	 = $row["id_producto"];
+				$data["id_status"] 	 	 = $row["id_status"];
 				$data["producto"] 		 = $row["producto"];
 				$data["codigo_producto"] = $row["codigo_producto"];
 				$data["categoria"] 	 	 = $row["categoria"];
@@ -184,6 +186,12 @@
 
 		public function cancelarSolicitud($id){
 			$query = "UPDATE solicitudes SET id_status = 2 WHERE id_solicitud=" . $id;
+			$resQuery = mysqli_query($this->con, $query);
+			return $resQuery;
+		}
+
+		public function aceptarSolicitud($id){
+			$query = "UPDATE solicitudes SET id_status = 4 WHERE id_solicitud=" . $id;
 			$resQuery = mysqli_query($this->con, $query);
 			return $resQuery;
 		}
@@ -218,7 +226,7 @@
 			if(mysqli_num_rows($res) > 0){
 				$i = 0;
 				while($row = mysqli_fetch_assoc($res)){
-					$data["id_solicitud"] = $row["id_solicitud"];
+					$data["id_solicitud"][$i]		 = $row["id_solicitud"];
 					$data["folio"][$i] 			 = $row["folio"];
 					$data["nombre"][$i] 		 = $row["nombres"]." ".$row["ap_pat"]." ".$row["ap_mat"];
 					$data["fecha_creacion"][$i]  = $row["fecha_creacion"];
