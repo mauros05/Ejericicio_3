@@ -20,6 +20,15 @@
             case "buscarSolicitud":
                 $comprasController->buscarSolicitud($_GET["idSolicitud"]);
                 break;
+            case "od":
+                $comprasController->ordenCompra($_GET['ids']);
+                break;
+            case "ordenes":
+                $comprasController->ordenesAprobadas();
+                break;
+            case "bp":
+                $comprasController->buscarProveedor($_GET['cod_prov']);
+                break;
 			}
 		} 
     } else {

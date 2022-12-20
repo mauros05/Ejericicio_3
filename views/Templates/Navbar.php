@@ -29,6 +29,9 @@
               <?php if($_SESSION['id_rol'] == 1){ ?>
                 <li><a class="dropdown-item" href="compras.php?ac=vs">Ver solicitudes</a></li>
               <?php } ?>
+              <?php if($_SESSION['id_departamento'] == 1){ ?>
+                <li><a class="dropdown-item" href="compras.php?ac=ordenes">Ordens</a></li>
+              <?php } ?>
               <?php } ?>
           </ul>
         </li>

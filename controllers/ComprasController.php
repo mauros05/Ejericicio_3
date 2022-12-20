@@ -133,6 +133,31 @@
 			// $cantidades = substr($cantidad, 0, -1 );
 			
 		}
+		
+		public function ordenCompra($id) {
+			$data['Titulo']  = 'Orden';
+			$data['urlJquery'] = 'assets/js/ordenCompras.js';
+			$resSolicitudes	 = $this->ComprasModel->ordenCompra($id);
+			
+
+			require_once "views/Templates/Header.php";
+			require_once "views/Templates/Navbar.php";
+			require_once "views/ComprasVista/ordenCompras.php";
+			require_once "views/Templates/Footer.php";
+			
+		}
+
+		public function ordenesAprobadas() {
+			$data['Titulo']  = 'Orden Aprovadas';
+			$resSolicitudes	 = $this->ComprasModel->ordenesAprobadas();
+
+			require_once "views/Templates/Header.php";
+			require_once "views/Templates/Navbar.php";
+			require_once "views/ComprasVista/ordenes.php";
+			require_once "views/Templates/Footer.php";
+			
+		}
+		
 
 		public function cancelarSolicitud($id) {
 			$resSolicitud = $this->ComprasModel->cancelarSolicitud($id);
@@ -144,6 +169,11 @@
 			$resSolicitud = $this->ComprasModel->aceptarSolicitud($id);
 			echo json_encode($resSolicitud);
 			exit;
+		}
+
+		public function buscarProveedor($codigo){
+			$resProv =  $this->ComprasModel->buscarProveedor($codigo);
+			echo json_encode($resProv);
 		}
 
 

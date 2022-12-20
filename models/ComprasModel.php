@@ -243,5 +243,108 @@
 			return $data;
 		}
 
+		public function ordenesAprobadas(){
+			$query = "SELECT s.id_solicitud, 
+			s.folio,
+			u.nombres, 
+			u.ap_pat, 
+			u.ap_mat, 
+			s.fecha_creacion, 
+			s.descripcion, 
+			s.id_urgencia,
+			s.id_status,
+			st.status, 
+			st.color,  
+			pr.codigo_producto 
+				FROM departamento d 
+				INNER JOIN permisos p 
+				ON p.id_departamento = d.id_departamento
+				INNER JOIN solicitudes s 
+				ON s.id_usuario =  p.id_usuario
+				INNER JOIN usuarios u 
+				ON u.id_usuario = s.id_usuario
+				LEFT JOIN productos pr 
+				ON pr.id_producto = s.id_producto
+				INNER JOIN status st 
+				ON st.id_status = s.id_status
+				WHERE s.id_status = 4";
+			$res = mysqli_query($this->con, $query);
+			
+			if(mysqli_num_rows($res) > 0){
+				$i = 0;
+				while($row = mysqli_fetch_assoc($res)){
+					$data["id_solicitud"][$i]	 = $row["id_solicitud"];
+					$data["folio"][$i] 			 = $row["folio"];
+					$data["nombre"][$i] 		 = $row["nombres"]." ".$row["ap_pat"]." ".$row["ap_mat"];
+					$data["fecha_creacion"][$i]  = $row["fecha_creacion"];
+					$data["descripcion"][$i] 	 = $row["descripcion"];
+					$data["id_urgencia"][$i] 	 = $row["id_urgencia"];
+					$data["status"][$i] 	     = $row["status"];
+					$data["codigo_producto"][$i] = $row["codigo_producto"];
+					$data["color"][$i] 			 = $row["color"];
+					$data["id_status"][$i] 		 = $row["id_status"];
+					$i++;
+				}
+			} else {
+				$data["msg_error_ms"] = "No se encontraron consultas";
+			}
+			return $data;
+		}
+
+		public function ordenCompra($id) {
+			$query = "SELECT s.id_solicitud,
+							s.id_producto,
+							s.folio,
+							s.cantidad,
+							pv.id_proveedor, 
+							pv.nombre,
+							pv.codigo_proveedor,
+							pv.direccion, 
+							p.precio, 
+							c.categoria 
+							FROM solicitudes s 
+							LEFT JOIN productos p 
+							ON s.id_producto = p.id_producto 
+							LEFT JOIN proveedor pv 
+							ON pv.id_proveedor = p.id_proveedor 
+							LEFT JOIN categorias c ON c.id_categoria=p.id_categoria WHERE s.id_solicitud=".$id;
+			$resQuery = mysqli_query($this->con, $query);
+			if(mysqli_num_rows($resQuery) > 0){
+				while($row = mysqli_fetch_assoc($resQuery)){
+					$data['id_solicitud']=$row['id_solicitud'];
+					$data['id_producto']=$row['id_producto'];
+					$data['folio']=$row['folio'];
+					$data['cantidad']=$row['cantidad'];
+					$data['id_proveedor']=$row['id_proveedor'];
+					$data['nombre']=$row['nombre'];
+					$data['codigo_proveedor']=$row['codigo_proveedor'];
+					$data['direccion']=$row['direccion'];
+					$data['precio']=$row['precio'];
+					$data['categoria']=$row['categoria'];
+				}
+			} else {
+				$data["error_msg"] = "No se encontraron datos";
+			}
+			return $data;
+		}
+
+		public function buscarProveedor($codigo){
+			$query = "SELECT * FROM proveedor WHERE codigo_proveedor ='".$codigo."'";
+			$resQuery = mysqli_query($this->con, $query);
+			$data["error_msg"] = NULL;
+			if(mysqli_num_rows($resQuery) > 0){
+				while($row = mysqli_fetch_assoc($resQuery)){
+					$data['id_proveedor']=$row['id_proveedor'];
+					$data['nombre']=$row['nombre'];
+					$data['status']=$row['status'];
+					$data['codigo_proveedor']=$row['codigo_proveedor'];
+					$data['direccion']=$row['direccion'];
+				}
+			} else {
+				$data["error_msg"] = "No se encuentra proveedor";
+			}
+			return $data;
+		}
+
     }
 ?>
