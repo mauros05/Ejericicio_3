@@ -31,21 +31,23 @@ $(document).ready(function(){
                 $("#urgencia").val(res.id_urgencia);
                 $("#descripcion").val(res.descripcion);
                 $("#status-modal").val(res.status);
-
+                $(".solo-producto").attr("hidden", "true")
                 var productos ="";
 
                 $.each(res.productos_res, function (key, producto) { 
                     // Con el += concatenamos 
                     productos+=`<hr>
                                 <div class="mb-3">
+                                    <label for="codigoProducto" class="form-label">Codigo del Producto:</label>
+                                    <input type="text" name="codigo-producto" class="form-control" id="codigo-producto" value="${producto.codigo_producto}" readonly='readonly'/>
+                                </div>
+
+                                <div class="mb-3">
                                     <label for="producto" class="form-label">Producto:</label>
                                     <input type="text" class="form-control" id="producto" value='${producto.producto}' readonly='readonly'/>
                                 </div>
                         
-                                <div class="mb-3">
-                                    <label for="codigoProducto" class="form-label">Codigo del Producto:</label>
-                                    <input type="text" name="codigo-producto" class="form-control" id="codigo-producto" value="${producto.codigo_producto}" readonly='readonly'/>
-                                </div>
+                                
 
                                 <div class="mb-3">
                                     <label for="catidad" class="form-label">Cantidad:</label>
@@ -67,20 +69,21 @@ $(document).ready(function(){
                 $("#urgencia").val(res.id_urgencia);
                 $("#descripcion").val(res.descripcion);
                 $("#status-modal").val(res.status);
+                $(".solo-producto").attr("hidden", "true")
                 var productos ="";
                 $.each(productos_Arry , function (key, producto) { 
                     // Con el += concatenamos 
                     productos+=`<hr>
                                 <div class="mb-3">
-                                    <label for="producto" class="form-label">Producto:</label>
-                                    <input type="text" class="form-control" id="producto" value='${producto.nomProducto}' readonly='readonly'/>
-                                </div>
-                        
-                                <div class="mb-3">
                                     <label for="codigoProducto" class="form-label">Codigo del Producto:</label>
                                     <input type="text" name="codigo-producto" class="form-control" id="codigo-producto" value="${producto.codigo_producto}" readonly='readonly'/>
                                 </div>
 
+                                <div class="mb-3">
+                                    <label for="producto" class="form-label">Producto:</label>
+                                    <input type="text" class="form-control" id="producto" value='${producto.nomProducto}' readonly='readonly'/>
+                                </div>
+                        
                                 <div class="mb-3">
                                     <label for="catidad" class="form-label">Cantidad:</label>
                                     <input type="text"  class="form-control" id="cantidad" value='${producto.cantidad}' readonly='readonly'/>
@@ -104,6 +107,7 @@ $(document).ready(function(){
                 $("#categoria").val(res.categoria);
                 $("#status-modal").val(res.status);
                 $(".multi-producto").html("")
+                $(".solo-producto").removeAttr("hidden");
                 $("#modalVerSolicitud").modal("show");
             }
     })

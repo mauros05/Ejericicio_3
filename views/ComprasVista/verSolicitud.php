@@ -56,7 +56,6 @@
   </div>
 </div>
 
-
 <div class="modal fade" id="modalVerSolicitud" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -64,59 +63,58 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body" id="div-message">
-			
         <div class="mb-3">
-            <label for="folio" class="form-label">Folio:</label>
-            <input type="text"  class="form-control" name="folio" id="folio" value='' readonly='readonly'/>
+          <label for="folio" class="form-label">Folio:</label>
+          <input type="text"  class="form-control" name="folio" id="folio" value='' readonly='readonly'/>
         </div>
 
         <div class="mb-3">
-            <label for="fecha" class="form-label">Fecha:</label>
-            <input type="text" name="fecha" class="form-control" id="fecha" value='' readonly='readonly'/>
+          <label for="fecha" class="form-label">Fecha:</label>
+          <input type="text" name="fecha" class="form-control" id="fecha" value='' readonly='readonly'/>
         </div>
 
         <div class="mb-3">
-            <label for="catidad" class="form-label">Cantidad:</label>
-            <input type="text"  class="form-control" id="cantidad" value='' readonly='readonly'/>
-        </div>
-
-        <div class="mb-3">
-            <label for="descripcion" class="form-label">Descripcion:</label>
-            <input type="text"  class="form-control" id="descripcion" value='' readonly='readonly'/>
+          <label for="descripcion" class="form-label">Descripcion:</label>
+          <input type="text"  class="form-control" id="descripcion" value='' readonly='readonly'/>
         </div>
 		
         <div class="mb-3">
-            <label for="urgencia" class="form-label">Urgencia:</label>
-            <input type="text" class="form-control" id="urgencia" value='' readonly='readonly'/>
+          <label for="urgencia" class="form-label">Urgencia:</label>
+          <input type="text" class="form-control" id="urgencia" value='' readonly='readonly'/>
         </div>
 
-        <div class="mb-3">
+        <div class="solo-producto">
+          <div class="mb-3">
             <label for="producto" class="form-label">Producto:</label>
             <input type="text" class="form-control" id="producto" value='' readonly='readonly'/>
-        </div>
+          </div>
 
-        <div class="mb-3">
+          <div class="mb-3">
             <label for="codigoProducto" class="form-label">Codigo del Producto:</label>
             <input type="text" name="codigo-producto" class="form-control" id="codigo-producto" value="" readonly='readonly'/>
-        </div>
+          </div>
 
-        <div class="mb-3">
+          <div class="mb-3">
+            <label for="catidad" class="form-label">Cantidad:</label>
+            <input type="text"  class="form-control" id="cantidad" value='' readonly='readonly'/>
+          </div>
+
+          <div class="mb-3">
             <label for="categoria" class="form-label">Categoria:</label>
             <input type="text" name="categoria" class="form-control" id="categoria" value='' readonly='readonly'/>
+          </div>
         </div>
-
-        <div class="multi-producto">
-
-        </div>
+      
+        <div class="multi-producto"></div>
 
         <div class="mb-3">
-            <label for="status" class="form-label">Status:</label>
-            <input type="text" name="status-modal" class="form-control" id="status-modal" value='' readonly='readonly'/>
+          <label for="status" class="form-label">Status:</label>
+          <input type="text" name="status-modal" class="form-control" id="status-modal" value='' readonly='readonly'/>
         </div>
         
-          <button type="button" id="aceptar-modal"  class="btn btn-success btn-aceptar">Aceptar</button>
-          <button type="button" id="cancelar-modal"  class="btn btn-danger btn-cancel">Cancelar</button>
-        
+        <button type="button" id="aceptar-modal"  class="btn btn-success btn-aceptar">Aceptar</button>
+        <button type="button" id="cancelar-modal"  class="btn btn-danger btn-cancel">Cancelar</button>
+
       </div>
     </div>
   </div>
