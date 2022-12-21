@@ -123,3 +123,15 @@
         <button type="button" id="cancelar-modal"  class="btn btn-danger btn-cancel">Cancelar</button>
         
       </div>
+
+      <table border="1">
+        <tr>
+        <td>codigo</td>
+        <td>Nombre</td>
+        <td>Categoria</td>
+        <td>Cantidad</td>
+        <td>Precio x unidad</td>
+        <td>Total</td>
+        </tr>
+
+      </table>

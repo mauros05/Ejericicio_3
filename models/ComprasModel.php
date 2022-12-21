@@ -99,7 +99,7 @@
 													 '".$data["urgencia"]."',
 													 '".$data["fecha"]."',
 													 3)";
-
+													 
 			$resQuery = mysqli_query($this->con, $query);
 
 			if(!$resQuery){
