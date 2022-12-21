@@ -36,7 +36,11 @@
         <!-- <div class="form-check"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"><label class="form-check-label" for="flexCheckDefault">
             Default checkbox
         </label></div> -->
-
+        <div class="multi-products">
+            <?php
+                $total = 0;
+            ?>
+        </div>
         <div class="mb-3">
             <label for="categoria" class="form-label">Categoria:</label>
             <input type="text" name="categoria" class="form-control" id="categoria" value='' readonly='readonly'/>

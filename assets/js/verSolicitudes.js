@@ -103,6 +103,7 @@ $(document).ready(function(){
                 $("#codigo-producto").val(res.codigo_producto);
                 $("#categoria").val(res.categoria);
                 $("#status-modal").val(res.status);
+                $(".multi-producto").html("")
                 $("#modalVerSolicitud").modal("show");
             }
     })

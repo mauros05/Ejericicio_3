@@ -139,6 +139,12 @@
 			$data['urlJquery'] = 'assets/js/ordenCompras.js';
 			$resSolicitudes	 = $this->ComprasModel->ordenCompra($id);
 			
+			$cant = json_decode($resSolicitudes["cantidad"]);
+			$prod = json_decode($resSolicitudes["id_producto"]);
+
+		echo "<pre>";
+		var_dump($prod);
+		exit;
 
 			require_once "views/Templates/Header.php";
 			require_once "views/Templates/Navbar.php";

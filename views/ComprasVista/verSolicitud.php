@@ -105,6 +105,10 @@
             <input type="text" name="categoria" class="form-control" id="categoria" value='' readonly='readonly'/>
         </div>
 
+        <div class="multi-producto">
+
+        </div>
+
         <div class="mb-3">
             <label for="status" class="form-label">Status:</label>
             <input type="text" name="status-modal" class="form-control" id="status-modal" value='' readonly='readonly'/>

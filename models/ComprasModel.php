@@ -215,7 +215,7 @@
 					ON s.id_usuario =  p.id_usuario
 					INNER JOIN usuarios u 
 					ON u.id_usuario = s.id_usuario
-					INNER JOIN productos pr 
+					LEFT JOIN productos pr 
 					ON pr.id_producto = s.id_producto
 					INNER JOIN status st 
 					ON st.id_status = s.id_status
@@ -311,16 +311,16 @@
 			$resQuery = mysqli_query($this->con, $query);
 			if(mysqli_num_rows($resQuery) > 0){
 				while($row = mysqli_fetch_assoc($resQuery)){
-					$data['id_solicitud']=$row['id_solicitud'];
-					$data['id_producto']=$row['id_producto'];
-					$data['folio']=$row['folio'];
-					$data['cantidad']=$row['cantidad'];
-					$data['id_proveedor']=$row['id_proveedor'];
-					$data['nombre']=$row['nombre'];
+					$data['id_solicitud']	 =$row['id_solicitud'];
+					$data['id_producto']	 =$row['id_producto'];
+					$data['folio']			 =$row['folio'];
+					$data['cantidad']		 =$row['cantidad'];
+					$data['id_proveedor']	 =$row['id_proveedor'];
+					$data['nombre']			 =$row['nombre'];
 					$data['codigo_proveedor']=$row['codigo_proveedor'];
-					$data['direccion']=$row['direccion'];
-					$data['precio']=$row['precio'];
-					$data['categoria']=$row['categoria'];
+					$data['direccion']		 =$row['direccion'];
+					$data['precio']			 =$row['precio'];
+					$data['categoria']		 =$row['categoria'];
 				}
 			} else {
 				$data["error_msg"] = "No se encontraron datos";
@@ -334,11 +334,11 @@
 			$data["error_msg"] = NULL;
 			if(mysqli_num_rows($resQuery) > 0){
 				while($row = mysqli_fetch_assoc($resQuery)){
-					$data['id_proveedor']=$row['id_proveedor'];
-					$data['nombre']=$row['nombre'];
-					$data['status']=$row['status'];
 					$data['codigo_proveedor']=$row['codigo_proveedor'];
-					$data['direccion']=$row['direccion'];
+					$data['id_proveedor']	 =$row['id_proveedor'];
+					$data['direccion']		 =$row['direccion'];
+					$data['nombre']			 =$row['nombre'];
+					$data['status']			 =$row['status'];
 				}
 			} else {
 				$data["error_msg"] = "No se encuentra proveedor";
