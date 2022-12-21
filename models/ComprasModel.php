@@ -52,6 +52,7 @@
 			$query = "SELECT p.producto, 
 							 p.id_producto, 
 							 p.codigo_producto,
+							 p.precio,
 							 c.categoria
 							 FROM productos p 
 							 INNER JOIN categorias c 
@@ -65,6 +66,7 @@
 					$data['producto']    = $row['producto'];
 					$data['categoria'] 	 = $row['categoria'];
 					$data['id_producto'] = $row['id_producto'];
+					$data['precio'] 	 = $row['precio'];
 					$data['codigo_producto'] = $row['codigo_producto'];
 				}
 			} else {

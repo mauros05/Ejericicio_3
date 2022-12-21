@@ -141,11 +141,26 @@
 			
 			$cant = json_decode($resSolicitudes["cantidad"]);
 			$prod = json_decode($resSolicitudes["id_producto"]);
+			// echo "<pre>";
+			// var_dump($cant);
+			// exit;
+			
+			$res = NULL;
 
-		echo "<pre>";
-		var_dump($prod);
-		exit;
-
+			if(is_array($prod)){
+				$resSolicitudes["prodArray"] = $prod;
+			} elseif(is_object($prod)){
+				$id_prod = explode(',', $prod->id_producto);
+				$is_cant = explode(',', $cant->cantidad);
+				foreach($id_prod as $i => $idp){
+					$resp = $this->ComprasModel->getProducto(NULL, $idp);
+					$r["cantidad"] = $is_cant[$i];
+					array_push($resp, $r);
+					$res[] = $resp;
+				}
+				$resSolicitudes["productos_res"] = $res;
+			}
+			
 			require_once "views/Templates/Header.php";
 			require_once "views/Templates/Navbar.php";
 			require_once "views/ComprasVista/ordenCompras.php";
@@ -164,7 +179,6 @@
 			
 		}
 		
-
 		public function cancelarSolicitud($id) {
 			$resSolicitud = $this->ComprasModel->cancelarSolicitud($id);
 			echo json_encode($resSolicitud);

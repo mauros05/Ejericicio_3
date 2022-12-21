@@ -36,58 +36,89 @@
         <!-- <div class="form-check"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"><label class="form-check-label" for="flexCheckDefault">
             Default checkbox
         </label></div> -->
+
         <div class="multi-products">
             <?php
                 $total = 0;
+                if(isset($resSolicitudes["productos_res"])){
+                 foreach ($resSolicitudes["productos_res"] as $producto) {
+                    $total = $producto[0]["cantidad"] * $producto["precio"];
+                
             ?>
-        </div>
-        <div class="mb-3">
-            <label for="categoria" class="form-label">Categoria:</label>
-            <input type="text" name="categoria" class="form-control" id="categoria" value='' readonly='readonly'/>
+            <div>
+                <div class="mb-3">
+                    <label for="categoria" class="form-label">Categoria:</label>
+                    <input type="text" name="categoria" class="form-control" id="categoria" value='<?php echo $producto["categoria"] ?>' readonly='readonly'/>
+                </div>
+
+                <div class="mb-3">
+                    <label for="catidad" class="form-label">Cantidad:</label>
+                    <input type="text"  class="form-control" id="cantidad" value='<?php echo $producto[0]["cantidad"] ?>' name="cantidad" readonly='readonly'/>
+                </div>
+
+                <div class="mb-3">
+                    <label for="precio" class="form-label">Precio Unitario:</label>
+                    <input type="text"  class="form-control" id="precio" name="precio" value='<?php echo $producto["precio"] ?>' readonly='readonly'/>
+                </div>
+
+                <div class="mb-5">
+                    <label for="total" class="form-label">Total:</label>
+                    <input type="text"  class="form-control" id="total" name="total "value='<?php echo $total; ?>' readonly='readonly'/>
+                </div>
+            </div>
+            <?php  
+                }} elseif(isset($resSolicitudes["prodArray"])) {
+                    foreach($resSolicitudes["prodArray"] as $producto){
+                    $precio = $this->ComprasModel->getProducto(NULL, $producto->id_producto);
+                    $total = $precio["precio"] * $producto->cantidad;         
+            ?>
+            <div>
+                <div class="mb-3">
+                    <label for="categoria" class="form-label">Categoria:</label>
+                    <input type="text" name="categoria" class="form-control" id="categoria" value='<?php echo $producto->categoria ?>' readonly='readonly'/>
+                </div>
+
+                <div class="mb-3">
+                    <label for="catidad" class="form-label">Cantidad:</label>
+                    <input type="text"  class="form-control" id="cantidad" value='<?php echo $producto->cantidad ?>' name="cantidad" readonly='readonly'/>
+                </div>
+
+                <div class="mb-3">
+                    <label for="precio" class="form-label">Precio Unitario:</label>
+                    <input type="text"  class="form-control" id="precio" name="precio" value='<?php echo $precio["precio"] ?>' readonly='readonly'/>
+                </div>
+
+                <div class="mb-5">
+                    <label for="total" class="form-label">Total:</label>
+                    <input type="text"  class="form-control" id="total" name="total "value='<?php echo $total; ?>' readonly='readonly'/>
+                </div>
+            </div>
+            <?php }} else{
+                $total = $resSolicitudes["cantidad"] * $resSolicitudes["precio"];?>
+                <div>
+                    <div class="mb-3">
+                        <label for="categoria" class="form-label">Categoria:</label>
+                        <input type="text" name="categoria" class="form-control" id="categoria" value='<?php echo $resSolicitudes["categoria"] ?>' readonly='readonly'/>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="catidad" class="form-label">Cantidad:</label>
+                        <input type="text"  class="form-control" id="cantidad" value='<?php echo $resSolicitudes["cantidad"] ?>' name="cantidad" readonly='readonly'/>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="precio" class="form-label">Precio Unitario:</label>
+                        <input type="text"  class="form-control" id="precio" name="precio" value='<?php echo $resSolicitudes["precio"] ?>' readonly='readonly'/>
+                    </div>
+
+                    <div class="mb-5">
+                        <label for="total" class="form-label">Total:</label>
+                        <input type="text"  class="form-control" id="total" name="total "value='<?php echo $total; ?>' readonly='readonly'/>
+                    </div>
+                </div>
+            <?php }  ?>
         </div>
 
-        <div class="mb-3">
-            <label for="catidad" class="form-label">Cantidad:</label>
-            <input type="text"  class="form-control" id="cantidad" value='' name="cantidad" readonly='readonly'/>
-        </div>
-
-        <div class="mb-3">
-            <label for="precio" class="form-label">Precio Unitario:</label>
-            <input type="text"  class="form-control" id="precio" name="precio" value='' readonly='readonly'/>
-        </div>
-
-        <div class="mb-3">
-            <label for="total" class="form-label">Total:</label>
-            <input type="text"  class="form-control" id="total" name="total "value='' readonly='readonly'/>
-        </div>
-
-        <div class="mb-3">
-            <label for="descripcion" class="form-label">Descripcion:</label>
-            <input type="text" name="descripcion" class="form-control" id="descripcion" value='' readonly='readonly'/>
-        </div>
-		
-        <div class="mb-3">
-            <label for="urgencia" class="form-label">Urgencia:</label>
-            <input type="text" name="urgencia" class="form-control" id="urgencia" value='' readonly='readonly'/>
-        </div>
-
-        <div class="mb-3">
-            <label for="producto" class="form-label">Producto:</label>
-            <input type="text" name="productos-orden" class="form-control" id="producto" value='' readonly='readonly'/>
-        </div>
-
-        <div class="mb-3">
-            <label for="codigoProducto" class="form-label">Codigo del Producto:</label>
-            <input type="text" name="codigo-producto" class="form-control" id="codigo-producto" value="" readonly='readonly'/>
-        </div>
-
-        
-
-        <div class="mb-3">
-            <label for="status" class="form-label">Status:</label>
-            <input type="text" name="status-modal" class="form-control" id="status-modal" value='' readonly='readonly'/>
-        </div>
-        
         <button type="button" id="aceptar-modal"  class="btn btn-success btn-aceptar">Aceptar</button>
         <button type="button" id="cancelar-modal"  class="btn btn-danger btn-cancel">Cancelar</button>
         
