@@ -70,11 +70,11 @@
                 <td class="total" id="total<?php echo $producto["id_producto"]?>"></td>
             </tr>
             
-                <input type="hidden" name="nombreProducto" value="">
-                <input type="hidden" name="codigoProducto" value="">
-                <input type="hidden" name="Categoria" value="<?php echo $producto["categoria"] ?>">
-                <input type="hidden" name="Cantidad" value="<?php echo $producto[0]["cantidad"] ?>">
-                <input type="hidden" name="idProducto" value="<?php echo $producto["id_producto"] ?>">
+                <input type="hidden" id="nombreProducto<?php echo $producto["id_producto"] ?>" value="">
+                <input type="hidden" id="codigoProducto<?php echo $producto["id_producto"] ?>" value="">
+                <input type="hidden" id="Categoria<?php echo $producto["id_producto"] ?>" value="<?php echo $producto["categoria"] ?>">
+                <input type="hidden" id="Cantidad<?php echo $producto["id_producto"] ?>" value="<?php echo $producto[0]["cantidad"] ?>">
+                <input type="hidden" id="idProducto<?php echo $producto["id_producto"] ?>" value="<?php echo $producto["id_producto"] ?>">
             
                 <?php
                 }
@@ -97,11 +97,11 @@
                     <td><input class="form-control precioUnitario precioU<?php echo $producto->id_producto ?>" name="cantidad" type="number" data-id_producto="<?php echo $producto->id_producto ?>"  data-cantidad="<?php echo $producto->cantidad ?>" value="" disabled></td>
                     <td class="total" id="total<?php echo $producto->id_producto ?>"></td>
                 </tr>
-                <input type="hidden" name="nombreProducto" value="<?php echo $producto->nomProducto ?>">
-                <input type="hidden" name="codigoProducto" value="<?php echo $producto->codigo_producto ?>">
-                <input type="hidden" name="Categoria" value="<?php echo $producto->categoria ?>">
-                <input type="hidden" name="Cantidad" value="<?php echo $producto->cantidad  ?>">
-                <input type="hidden" name="idProducto" value="<?php echo $producto->id_producto  ?>">
+                <input type="hidden" id="nombreProducto<?php echo $producto->id_producto ?>" value="<?php echo $producto->nomProducto ?>">
+                <input type="hidden" id="codigoProducto<?php echo $producto->id_producto ?>" value="<?php echo $producto->codigo_producto ?>">
+                <input type="hidden" id="Categoria<?php echo $producto->id_producto ?>" value="<?php echo $producto->categoria ?>">
+                <input type="hidden" id="Cantidad<?php echo $producto->id_producto ?>" value="<?php echo $producto->cantidad  ?>">
+                <input type="hidden" id="idProducto<?php echo $producto->id_producto ?>" value="<?php echo $producto->id_producto  ?>">
             
                 
                 <?php }} else{ ?>
@@ -119,6 +119,11 @@
                     <td><input class="form-control precioUnitario precioU<?php echo $resSolicitudes["id_producto"]?>" type="number" data-id_producto="<?php echo $resSolicitudes["id_producto"] ?>"  data-cantidad="<?php echo $resSolicitudes["cantidad"] ?>" value="" disabled></td>
                     <td class="total" id="total<?php echo $resSolicitudes["id_producto"]?>"></td>
                 </tr>
+                <input type="hidden" id="nombreProducto<?php echo $resSolicitudes["id_producto"]?>" value="<?php echo $producto->nomProducto ?>">
+                <input type="hidden" id="codigoProducto<?php echo $resSolicitudes["id_producto"]?>" value="<?php echo $producto->codigo_producto ?>">
+                <input type="hidden" id="Categoria<?php echo $resSolicitudes["id_producto"]?>" value="<?php echo $producto->categoria ?>">
+                <input type="hidden" id="Cantidad<?php echo $resSolicitudes["id_producto"]?>" value="<?php echo $producto->cantidad  ?>">
+                <input type="hidden" id="idProducto<?php echo $resSolicitudes["id_producto"]?>" value="<?php echo $producto->id_producto  ?>">
                 <?php } ?>
                 <tr>
                     <td colspan="6" class="text-end">Total General</td>

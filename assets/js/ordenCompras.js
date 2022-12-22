@@ -54,6 +54,11 @@ $(document).ready(function(){
             var id_producto = $(this).data("id_producto");
 
             if($(".checkboxProd"+id_producto).prop('checked')){
+                $("#nombreProducto"+id_producto).attr("name", "nombreProducto");
+                $("#codigoProducto"+id_producto).attr("name", "codigoProducto");
+                $("#Categoria"+id_producto).attr("name", "Categoria");
+                $("#Cantidad"+id_producto).attr("name", "Cantidad");
+                $("#idProducto"+id_producto).attr("name", "id_producto");
                 $(".precioU"+id_producto).removeAttr("disabled");
                 
                 var precio = $(this).val();
@@ -62,6 +67,11 @@ $(document).ready(function(){
                 
                 $("#total_general").text(totalGeneral);
             }else{
+                $("#nombreProducto"+id_producto).removeAttr("name");
+                $("#codigoProducto"+id_producto).removeAttr("name");
+                $("#Categoria"+id_producto).removeAttr("name");
+                $("#Cantidad"+id_producto).removeAttr("name");
+                $("#idProducto"+id_producto).removeAttr("name");
                 $(".precioU"+id_producto).attr("disabled", true);
             }
         });
