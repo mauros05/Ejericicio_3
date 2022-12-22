@@ -9,7 +9,8 @@ $(document).ready(function(){
         event.preventDefault();
         var cod_prov = $("#codigoProveedor").val();
         obj.data   = { cod_prov: cod_prov, ac: "bp"}
-        obj.url    = "compras.php";   
+        obj.url    = "compras.php";
+        obj.type = "GET"   
         var res = peticionAjax2(obj);
         if(res.error_msg != null){
 			alert(res.error_msg);
@@ -44,7 +45,10 @@ $(document).ready(function(){
 
     $("#aceptar").click(function(){
         var data = $("#ordenS").serialize()
-        console.log(data)
+        obj.data = data
+        obj.type = "POST"
+        obj.url  = "complement/compras";   
+        var res = peticionAjax2(obj);
     })
 
     function calcularTotalGeneral(){
@@ -54,11 +58,11 @@ $(document).ready(function(){
             var id_producto = $(this).data("id_producto");
 
             if($(".checkboxProd"+id_producto).prop('checked')){
-                $("#nombreProducto"+id_producto).attr("name", "nombreProducto");
-                $("#codigoProducto"+id_producto).attr("name", "codigoProducto");
-                $("#Categoria"+id_producto).attr("name", "Categoria");
-                $("#Cantidad"+id_producto).attr("name", "Cantidad");
-                $("#idProducto"+id_producto).attr("name", "id_producto");
+                $("#nombreProducto"+id_producto).attr("name", "nombreProducto"+id_producto);
+                $("#codigoProducto"+id_producto).attr("name", "codigoProducto"+id_producto);
+                $("#Categoria"+id_producto).attr("name", "Categoria"+id_producto);
+                $("#Cantidad"+id_producto).attr("name", "Cantidad"+id_producto);
+                $("#idProducto"+id_producto).attr("name", "id_producto"+id_producto);
                 $(".precioU"+id_producto).removeAttr("disabled");
                 
                 var precio = $(this).val();

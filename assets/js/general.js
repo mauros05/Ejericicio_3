@@ -1,6 +1,9 @@
 function peticionAjax2(datos){
     var respuesta;
     $.ajax({
+        // headers: {"X-CSRF-TOKEN": window.CSRF_TOKEN},
+        // headers: {"Authorization": localStorage.getItem('token')},
+        headers: { 'X-CSRF-Token' : $('meta[name="csrf-token"]').attr('content')},
         async: false,
         url: datos.url,
         data: datos.data,

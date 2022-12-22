@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Prueba1Controller;
+use App\Http\Controllers\OrdenCompraController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,4 +24,6 @@ Route::get('/', function () {
 // Route::get('/prueba1', [Prueba1Controller::class, 'index'])->name("index");
 
 // Haciendo Resource
-Route::resource('/prueba1', Prueba1Controller::class);
+// Route::resource('/prueba1', Prueba1Controller::class);
+
+Route::resource('/compras', OrdenCompraController::class);
