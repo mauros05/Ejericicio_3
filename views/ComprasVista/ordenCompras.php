@@ -37,101 +37,78 @@
             Default checkbox
         </label></div> -->
 
-        <div class="multi-products">
+    <div>
+        <table class="table table-striped">
+            <tr>
+                <td></td>
+                <td>Codigo</td>
+                <td>Nombre</td>
+                <td>Categoria</td>
+                <td>Cantidad</td>
+                <td>Precio x unidad</td>
+                <td>Total</td>
+            </tr>
             <?php
                 $total = 0;
                 if(isset($resSolicitudes["productos_res"])){
-                 foreach ($resSolicitudes["productos_res"] as $producto) {
-                    $total = $producto[0]["cantidad"] * $producto["precio"];
-                
+                        echo "B";
+                    var_dump($resSolicitudes);
+                    foreach ($resSolicitudes["productos_res"] as $producto) {
+                    $total = $producto[0]["cantidad"] * $producto["precio"];       
             ?>
-            <div>
-                <div class="mb-3">
-                    <label for="categoria" class="form-label">Categoria:</label>
-                    <input type="text" name="categoria" class="form-control" id="categoria" value='<?php echo $producto["categoria"] ?>' readonly='readonly'/>
-                </div>
-
-                <div class="mb-3">
-                    <label for="catidad" class="form-label">Cantidad:</label>
-                    <input type="text"  class="form-control" id="cantidad" value='<?php echo $producto[0]["cantidad"] ?>' name="cantidad" readonly='readonly'/>
-                </div>
-
-                <div class="mb-3">
-                    <label for="precio" class="form-label">Precio Unitario:</label>
-                    <input type="text"  class="form-control" id="precio" name="precio" value='<?php echo $producto["precio"] ?>' readonly='readonly'/>
-                </div>
-
-                <div class="mb-5">
-                    <label for="total" class="form-label">Total:</label>
-                    <input type="text"  class="form-control" id="total" name="total "value='<?php echo $total; ?>' readonly='readonly'/>
-                </div>
-            </div>
-            <?php  
-                }} elseif(isset($resSolicitudes["prodArray"])) {
-                    foreach($resSolicitudes["prodArray"] as $producto){
+            <tr>
+                <td>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault"></label>
+                    </div>
+                </td>
+                <td><?php ?></td>
+                <td><?php ?></td>
+                <td><?php echo $producto["categoria"] ?></td>
+                <td><?php echo $producto[0]["cantidad"] ?></td>
+                <td><input class="form-control precioUnitario" type="number" value=""></td>
+                <td></td>
+            </tr>
+                <?php
+                }
+            } elseif (isset($resSolicitudes["prodArray"])) {  
+                foreach ($resSolicitudes["prodArray"] as $producto) {
                     $precio = $this->ComprasModel->getProducto(NULL, $producto->id_producto);
-                    $total = $precio["precio"] * $producto->cantidad;         
-            ?>
-            <div>
-                <div class="mb-3">
-                    <label for="categoria" class="form-label">Categoria:</label>
-                    <input type="text" name="categoria" class="form-control" id="categoria" value='<?php echo $producto->categoria ?>' readonly='readonly'/>
-                </div>
+                    $total = $precio["precio"] * $producto->cantidad;
+                ?>
+                <tr>
+                    <td>
+                        <div class="form-check">
+                            <input class="form-check-input checkTotal checkboxProd<?php echo $producto->id_producto ?>" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault"></label>
+                        </div>
+                    </td>
+                    <td><?php echo $producto->codigo_producto ?></td>
+                    <td><?php echo $producto->nomProducto ?></td>
+                    <td><?php echo $producto->categoria ?></td>
+                    <td><?php echo $producto->cantidad ?></td>
+                    <td><input class="form-control precioUnitario" type="number" data-id_producto="<?php echo $producto->id_producto ?>"  data-cantidad="<?php echo $producto->cantidad ?>" value=""></td>
+                    <td class="total" id="total<?php echo $producto->id_producto ?>"></td>
+                </tr>
+                
+                <?php }} else{ 
+                    var_dump($resSolicitudes)?>
+                <tr>
+                    <td><?php ?></td>
+                    <td><?php ?></td>
+                    <td><?php echo $resSolicitudes["categoria"] ?></td>
+                    <td><?php echo $resSolicitudes["cantidad"] ?></td>
+                    <td><input class="form-control precioUnitario" type="number" value=""></td>
+                    <td></td>
+                </tr>
+                <?php } ?>
+                <tr>
+                    <td colspan="6" class="text-end">Total General</td>
+                    <td>$<span id="total_general">0</span></td>
+                </tr>
+        </table>
+    </div>
+</div>
 
-                <div class="mb-3">
-                    <label for="catidad" class="form-label">Cantidad:</label>
-                    <input type="text"  class="form-control" id="cantidad" value='<?php echo $producto->cantidad ?>' name="cantidad" readonly='readonly'/>
-                </div>
-
-                <div class="mb-3">
-                    <label for="precio" class="form-label">Precio Unitario:</label>
-                    <input type="text"  class="form-control" id="precio" name="precio" value='<?php echo $precio["precio"] ?>' readonly='readonly'/>
-                </div>
-
-                <div class="mb-5">
-                    <label for="total" class="form-label">Total:</label>
-                    <input type="text"  class="form-control" id="total" name="total "value='<?php echo $total; ?>' readonly='readonly'/>
-                </div>
-            </div>
-            <?php }} else{
-                $total = $resSolicitudes["cantidad"] * $resSolicitudes["precio"];?>
-                <div>
-                    <div class="mb-3">
-                        <label for="categoria" class="form-label">Categoria:</label>
-                        <input type="text" name="categoria" class="form-control" id="categoria" value='<?php echo $resSolicitudes["categoria"] ?>' readonly='readonly'/>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="catidad" class="form-label">Cantidad:</label>
-                        <input type="text"  class="form-control" id="cantidad" value='<?php echo $resSolicitudes["cantidad"] ?>' name="cantidad" readonly='readonly'/>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="precio" class="form-label">Precio Unitario:</label>
-                        <input type="text"  class="form-control" id="precio" name="precio" value='<?php echo $resSolicitudes["precio"] ?>' readonly='readonly'/>
-                    </div>
-
-                    <div class="mb-5">
-                        <label for="total" class="form-label">Total:</label>
-                        <input type="text"  class="form-control" id="total" name="total "value='<?php echo $total; ?>' readonly='readonly'/>
-                    </div>
-                </div>
-            <?php }  ?>
-        </div>
-
-        <button type="button" id="aceptar-modal"  class="btn btn-success btn-aceptar">Aceptar</button>
-        <button type="button" id="cancelar-modal"  class="btn btn-danger btn-cancel">Cancelar</button>
-        
-      </div>
-
-      <table border="1">
-        <tr>
-        <td>codigo</td>
-        <td>Nombre</td>
-        <td>Categoria</td>
-        <td>Cantidad</td>
-        <td>Precio x unidad</td>
-        <td>Total</td>
-        </tr>
-
-      </table>
+      

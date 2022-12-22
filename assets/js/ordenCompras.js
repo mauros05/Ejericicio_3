@@ -20,6 +20,42 @@ $(document).ready(function(){
 			$("#nombreProveedor").val(res.nombre);
 			$("#direccion").val(res.direccion);
 		}
-    })
+    });
+
+    $(".precioUnitario").change(function(){
+        var precio = $(this).val()
+        var cantidad = $(this).data("cantidad")
+        var id_producto = $(this).data("id_producto")
+        var total = precio * cantidad;
+
+        $("#total"+id_producto).html(total)
+
+        calcularTotalGeneral()
+    });
+
+    $(".checkTotal").change(function(){
+		if($(this).prop('checked')){
+			calcularTotalGeneral();
+		}else{
+			calcularTotalGeneral();
+		}
+	});
+
+    function calcularTotalGeneral(){
+        var totalGeneral = 0;
+        
+        $(".precioUnitario").each(function(){
+            var id_producto = $(this).data("id_producto");
+
+            if($(".checkboxProd"+id_producto).prop('checked')){
+                var precio = $(this).val();
+                var cantidad = $(this).data("cantidad");
+                totalGeneral += precio * cantidad;
+                
+                $("#total_general").text(totalGeneral);
+            }
+        })
+    }
 
 })
+

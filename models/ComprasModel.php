@@ -99,7 +99,7 @@
 													 '".$data["urgencia"]."',
 													 '".$data["fecha"]."',
 													 3)";
-													 
+
 			$resQuery = mysqli_query($this->con, $query);
 
 			if(!$resQuery){
@@ -208,7 +208,8 @@
 							s.descripcion, 
 							s.id_urgencia, 
 							st.status, 
-							st.color,  
+							st.color,
+							st.id_status, 
 							pr.codigo_producto 
 					FROM departamento d 
 					INNER JOIN permisos p 
@@ -237,6 +238,7 @@
 					$data["status"][$i] 	     = $row["status"];
 					$data["codigo_producto"][$i] = $row["codigo_producto"];
 					$data["color"][$i] 			 = $row["color"];
+					$data["id_status"][$i] 		 = $row["id_status"];
 					$i++;
 				}
 			} else {
@@ -256,7 +258,8 @@
 			s.id_urgencia,
 			s.id_status,
 			st.status, 
-			st.color,  
+			st.color,
+			st.id_status,
 			pr.codigo_producto 
 				FROM departamento d 
 				INNER JOIN permisos p 
