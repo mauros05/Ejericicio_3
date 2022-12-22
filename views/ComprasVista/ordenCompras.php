@@ -51,15 +51,13 @@
             <?php
                 $total = 0;
                 if(isset($resSolicitudes["productos_res"])){
-                        echo "B";
-                    var_dump($resSolicitudes);
                     foreach ($resSolicitudes["productos_res"] as $producto) {
                     $total = $producto[0]["cantidad"] * $producto["precio"];       
             ?>
             <tr>
                 <td>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input class="form-check-input checkTotal checkboxProd<?php echo $producto["id_producto"] ?>" type="checkbox" value="" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault"></label>
                     </div>
                 </td>
@@ -67,8 +65,8 @@
                 <td><?php ?></td>
                 <td><?php echo $producto["categoria"] ?></td>
                 <td><?php echo $producto[0]["cantidad"] ?></td>
-                <td><input class="form-control precioUnitario" type="number" value=""></td>
-                <td></td>
+                <td><input class="form-control precioUnitario" type="number" data-id_producto="<?php echo $producto["id_producto"] ?>"  data-cantidad="<?php echo  $producto[0]["cantidad"] ?>" value=""></td>
+                <td class="total" id="total<?php echo $producto["id_producto"]?>"></td>
             </tr>
                 <?php
                 }
@@ -92,15 +90,20 @@
                     <td class="total" id="total<?php echo $producto->id_producto ?>"></td>
                 </tr>
                 
-                <?php }} else{ 
-                    var_dump($resSolicitudes)?>
+                <?php }} else{ ?>
                 <tr>
+                    <td>
+                        <div class="form-check">
+                            <input class="form-check-input checkTotal checkboxProd<?php echo $resSolicitudes["id_producto"] ?>" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault"></label>
+                        </div>
+                    </td>
                     <td><?php ?></td>
                     <td><?php ?></td>
                     <td><?php echo $resSolicitudes["categoria"] ?></td>
                     <td><?php echo $resSolicitudes["cantidad"] ?></td>
-                    <td><input class="form-control precioUnitario" type="number" value=""></td>
-                    <td></td>
+                    <td><input class="form-control precioUnitario" type="number" data-id_producto="<?php echo $resSolicitudes["id_producto"] ?>"  data-cantidad="<?php echo $resSolicitudes["cantidad"] ?>" value=""></td>
+                    <td class="total" id="total<?php echo $resSolicitudes["id_producto"]?>"></td>
                 </tr>
                 <?php } ?>
                 <tr>

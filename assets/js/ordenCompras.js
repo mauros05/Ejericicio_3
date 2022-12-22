@@ -3,7 +3,6 @@ $(document).ready(function(){
     init();
     function init(){
         event.preventDefault
-        console.log("Saludos")
     }
 
     $(".buscarProveedor").change(function(event){
@@ -54,7 +53,10 @@ $(document).ready(function(){
                 
                 $("#total_general").text(totalGeneral);
             }
-        })
+        });
+        if(totalGeneral == 0){
+            $("#total_general").text(totalGeneral)
+        }
     }
 
 })
