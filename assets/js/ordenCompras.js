@@ -15,9 +15,11 @@ $(document).ready(function(){
 			alert(res.error_msg);
 			$("#nombreProveedor").val('');
 			$("#direccion").val('');
+            $("#id_proveedor").val('');
 		}else{
 			$("#nombreProveedor").val(res.nombre);
 			$("#direccion").val(res.direccion);
+            $("#id_proveedor").val(res.id_proveedor);
 		}
     });
 
@@ -40,6 +42,11 @@ $(document).ready(function(){
 		}
 	});
 
+    $("#aceptar").click(function(){
+        var data = $("#ordenS").serialize()
+        console.log(data)
+    })
+
     function calcularTotalGeneral(){
         var totalGeneral = 0;
         
@@ -47,13 +54,18 @@ $(document).ready(function(){
             var id_producto = $(this).data("id_producto");
 
             if($(".checkboxProd"+id_producto).prop('checked')){
+                $(".precioU"+id_producto).removeAttr("disabled");
+                
                 var precio = $(this).val();
                 var cantidad = $(this).data("cantidad");
                 totalGeneral += precio * cantidad;
                 
                 $("#total_general").text(totalGeneral);
+            }else{
+                $(".precioU"+id_producto).attr("disabled", true);
             }
         });
+
         if(totalGeneral == 0){
             $("#total_general").text(totalGeneral)
         }
