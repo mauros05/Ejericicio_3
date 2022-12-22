@@ -301,6 +301,8 @@
 							s.id_producto,
 							s.folio,
 							s.cantidad,
+							s.descripcion,
+							s.id_status,
 							pv.id_proveedor, 
 							pv.nombre,
 							pv.codigo_proveedor,
@@ -318,6 +320,8 @@
 				while($row = mysqli_fetch_assoc($resQuery)){
 					$data['id_solicitud']	 =$row['id_solicitud'];
 					$data['id_producto']	 =$row['id_producto'];
+					$data['descripcion']	 =$row['descripcion'];
+					$data['status']	 		 =$row['id_status'];
 					$data['folio']			 =$row['folio'];
 					$data['cantidad']		 =$row['cantidad'];
 					$data['id_proveedor']	 =$row['id_proveedor'];

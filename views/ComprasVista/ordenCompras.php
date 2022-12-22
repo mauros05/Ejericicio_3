@@ -24,7 +24,11 @@
             <label for="direccion" class="form-label" >Direccion</label>
             <input type="text" class="form-control" name ="direccion" id="direccion" aria-describedby="direccion" value ="" readonly="readonly">
         </div>
-    
+
+        <div class="mb-5">
+            <label for="descripcion" class="form-label" >Descripcion</label>
+            <textarea name="descripcion"  class="form-control"></textarea>
+        </div>
         <!-- <div class="mb-3">  
             <label for="proveedor" class="form-label">Proveedor</label>
             <select name ="proveedor" id ="proveedor" >
@@ -128,10 +132,15 @@
                 <tr>
                     <td colspan="6" class="text-end">Total General</td>
                     <td>$<span id="total_general">0</span></td>
+                    <input type="hidden" name="totalGeneral" class="totalGeneral">
                 </tr>
         </table>
+        
+        
+        <input type="hidden" name="status" value="<?php echo $resSolicitudes["status"] ?>">
         <input type="hidden" name="id_proveedor" id="id_proveedor" value="">
         <input type="hidden" name="id_solicitud" value="<?php echo $resSolicitudes["id_solicitud"] ?>">
+        <input type="hidden" name="id_usuario_co" value="<?php echo $_SESSION["id_usuario"] ?>">
         <div>
             <button type="button" id="aceptar" class="btn btn-success">Aceptar</button>
         </div>

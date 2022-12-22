@@ -12,6 +12,7 @@ $(document).ready(function(){
         obj.url    = "compras.php";
         obj.type = "GET"   
         var res = peticionAjax2(obj);
+        
         if(res.error_msg != null){
 			alert(res.error_msg);
 			$("#nombreProveedor").val('');
@@ -25,10 +26,10 @@ $(document).ready(function(){
     });
 
     $(".precioUnitario").change(function(){
-        var precio = $(this).val()
-        var cantidad = $(this).data("cantidad")
+        var precio      = $(this).val()
+        var cantidad    = $(this).data("cantidad")
         var id_producto = $(this).data("id_producto")
-        var total = precio * cantidad;
+        var total       = precio * cantidad;
 
         $("#total"+id_producto).html(total)
 
@@ -49,6 +50,7 @@ $(document).ready(function(){
         obj.type = "POST"
         obj.url  = "complement/compras";   
         var res = peticionAjax2(obj);
+        alert(res)
     })
 
     function calcularTotalGeneral(){
@@ -58,11 +60,11 @@ $(document).ready(function(){
             var id_producto = $(this).data("id_producto");
 
             if($(".checkboxProd"+id_producto).prop('checked')){
-                $("#nombreProducto"+id_producto).attr("name", "nombreProducto"+id_producto);
-                $("#codigoProducto"+id_producto).attr("name", "codigoProducto"+id_producto);
-                $("#Categoria"+id_producto).attr("name", "Categoria"+id_producto);
-                $("#Cantidad"+id_producto).attr("name", "Cantidad"+id_producto);
-                $("#idProducto"+id_producto).attr("name", "id_producto"+id_producto);
+                $("#nombreProducto"+id_producto).attr("name", "nombreProducto[]");
+                $("#codigoProducto"+id_producto).attr("name", "codigoProducto[]");
+                $("#Categoria"+id_producto).attr("name", "Categoria[]");
+                $("#Cantidad"+id_producto).attr("name", "Cantidad[]");
+                $("#idProducto"+id_producto).attr("name", "id_producto[]");
                 $(".precioU"+id_producto).removeAttr("disabled");
                 
                 var precio = $(this).val();
@@ -70,7 +72,9 @@ $(document).ready(function(){
                 totalGeneral += precio * cantidad;
                 
                 $("#total_general").text(totalGeneral);
+                $(".totalGeneral").val(totalGeneral)
             }else{
+
                 $("#nombreProducto"+id_producto).removeAttr("name");
                 $("#codigoProducto"+id_producto).removeAttr("name");
                 $("#Categoria"+id_producto).removeAttr("name");
@@ -82,6 +86,7 @@ $(document).ready(function(){
 
         if(totalGeneral == 0){
             $("#total_general").text(totalGeneral)
+            $(".totalGeneral").val(totalGeneral)
         }
     }
 

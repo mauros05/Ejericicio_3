@@ -33,9 +33,40 @@ class OrdenCompraController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        dd($request->toArray());
+    public function store(Request $request) {
+        $arregloProductos=[];
+
+        for($i=0; $i < count($request['id_producto']) ; $i++){
+            $arregloDatos=array(
+                                'id_producto'=>$request['id_producto'],
+                                'nomProducto'=> $request['nombreProducto'][$i],
+                                'categoria'=>$request['Categoria'][$i],
+                                'cantidad'=>$request['Cantidad'][$i],
+                                'codigo_producto'=>$request['codigoProducto'][$i]
+                                );
+            array_push($arregloProductos,$arregloDatos);
+        }
+
+        $request["productos"] = json_encode($arregloProductos,true);
+
+        $orden = new orden_compra;
+        $orden->id_solicitud    =  $request['id_solicitud'];
+        $orden->fecha_orden     =  $request['fecha'];
+        $orden->id_proveedor    =  $request['id_proveedor'];
+        $orden->productos       =  $request['productos'];
+        $orden->total           =  $request['totalGeneral'];
+        $orden->id_usuario_co   =  $request['id_usuario_co'];
+        $orden->descripcion     =  $request['descripcion'];
+        $orden->status          =  $request['status'];
+
+        $orden->save();
+
+        if($orden->save()){
+            echo json_encode("Se envio orden");
+        }else{
+            echo json_encode("Se envio orden");
+        }
+        
     }
 
     /**
