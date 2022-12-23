@@ -70,7 +70,7 @@
                 <td><?php ?></td>
                 <td><?php echo $producto["categoria"] ?></td>
                 <td><?php echo $producto[0]["cantidad"] ?></td>
-                <td><input class="form-control precioUnitario" name="PrecioUnidad" type="number" data-id_producto="<?php echo $producto["id_producto"] ?>"  data-cantidad="<?php echo  $producto[0]["cantidad"] ?>" value="" disabled></td>
+                <td><input class="form-control precioUnitario precioU<?php echo $producto["id_producto"]?>" name="PrecioUnidad" type="number" data-id_producto="<?php echo $producto["id_producto"] ?>"  data-cantidad="<?php echo  $producto[0]["cantidad"] ?>" value="" disabled></td>
                 <td class="total" id="total<?php echo $producto["id_producto"]?>"></td>
             </tr>
             
@@ -101,13 +101,13 @@
                     <td><input class="form-control precioUnitario precioU<?php echo $producto->id_producto ?>" name="cantidad" type="number" data-id_producto="<?php echo $producto->id_producto ?>"  data-cantidad="<?php echo $producto->cantidad ?>" value="" disabled></td>
                     <td class="total" id="total<?php echo $producto->id_producto ?>"></td>
                 </tr>
+				
                 <input type="hidden" id="nombreProducto<?php echo $producto->id_producto ?>" value="<?php echo $producto->nomProducto ?>">
                 <input type="hidden" id="codigoProducto<?php echo $producto->id_producto ?>" value="<?php echo $producto->codigo_producto ?>">
                 <input type="hidden" id="Categoria<?php echo $producto->id_producto ?>" value="<?php echo $producto->categoria ?>">
                 <input type="hidden" id="Cantidad<?php echo $producto->id_producto ?>" value="<?php echo $producto->cantidad  ?>">
                 <input type="hidden" id="idProducto<?php echo $producto->id_producto ?>" value="<?php echo $producto->id_producto  ?>">
             
-                
                 <?php }} else{ ?>
                 <tr>
                     <td>
@@ -123,12 +123,14 @@
                     <td><input class="form-control precioUnitario precioU<?php echo $resSolicitudes["id_producto"]?>" type="number" data-id_producto="<?php echo $resSolicitudes["id_producto"] ?>"  data-cantidad="<?php echo $resSolicitudes["cantidad"] ?>" value="" disabled></td>
                     <td class="total" id="total<?php echo $resSolicitudes["id_producto"]?>"></td>
                 </tr>
-                <input type="hidden" id="nombreProducto<?php echo $resSolicitudes["id_producto"]?>" value="<?php echo $producto->nomProducto ?>">
-                <input type="hidden" id="codigoProducto<?php echo $resSolicitudes["id_producto"]?>" value="<?php echo $producto->codigo_producto ?>">
-                <input type="hidden" id="Categoria<?php echo $resSolicitudes["id_producto"]?>" value="<?php echo $producto->categoria ?>">
-                <input type="hidden" id="Cantidad<?php echo $resSolicitudes["id_producto"]?>" value="<?php echo $producto->cantidad  ?>">
-                <input type="hidden" id="idProducto<?php echo $resSolicitudes["id_producto"]?>" value="<?php echo $producto->id_producto  ?>">
-                <?php } ?>
+				
+                <input type="hidden" id="nombreProducto<?php echo $resSolicitudes["id_producto"]?>" value="">
+                <input type="hidden" id="codigoProducto<?php echo $resSolicitudes["id_producto"]?>" value="">
+                <input type="hidden" id="Categoria<?php echo $resSolicitudes["id_producto"]?>" value="<?php echo $resSolicitudes["categoria"] ?>">
+                <input type="hidden" id="Cantidad<?php echo $resSolicitudes["id_producto"]?>" value="<?php echo $resSolicitudes["cantidad"]  ?>">
+                <input type="hidden" id="idProducto<?php echo $resSolicitudes["id_producto"]?>" value="<?php echo $resSolicitudes["id_producto"]  ?>">
+                
+				<?php } ?>
                 <tr>
                     <td colspan="6" class="text-end">Total General</td>
                     <td>$<span id="total_general">0</span></td>
