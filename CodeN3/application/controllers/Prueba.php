@@ -26,8 +26,17 @@ class Prueba extends CI_Controller {
         $this->load->view('prueba2');
 	}
 
+    public function departamentos(){
+        $this->load->model("Mdb_comprasModel", "compras");
+        // $compras = new Mdb_comprasModel();
+        $resModeloDep['departamentos'] = $this->compras->departamentos();
+        $this->load->view('prueba2', $resModeloDep);
+    }
+
     private function suma(){
        $num = 2 + 3;
        return $num;
     }
+
+   
 }
