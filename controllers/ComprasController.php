@@ -78,6 +78,8 @@
         }
 
 		public function guardarSolicitud($data){
+		echo json_encode($data);
+		exit;
 			$folio    = explode("-", $data["folio"]);	
 			$resFolio = $this->ComprasModel->getFolio();
 			
